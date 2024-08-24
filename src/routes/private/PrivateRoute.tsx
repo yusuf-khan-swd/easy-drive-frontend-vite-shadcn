@@ -3,11 +3,14 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 
 const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
-  const { user, loading } = { user: true, loading: false };
+  const { userEmail, loading } = {
+    userEmail: "user@easydrive.com",
+    loading: false,
+  };
 
   if (loading) return <LoadingSpinner />;
 
-  if (user) return children;
+  if (userEmail) return children;
 
   return <Navigate to="/login" state={{ from: location }} replace />;
 };
