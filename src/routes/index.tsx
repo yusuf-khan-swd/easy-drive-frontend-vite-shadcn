@@ -1,6 +1,7 @@
 import DashboardLayout from "@/layouts/DashboardLayout";
 import MainLayout from "@/layouts/MainLayout";
 import AboutUs from "@/pages/AboutUs";
+import Booking from "@/pages/Booking";
 import CarDetails from "@/pages/CarDetails";
 import Cars from "@/pages/Cars";
 import ManageBookings from "@/pages/Dashboard/AdminDashboard/ManageBookings";
@@ -69,6 +70,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Dashboard />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/booking",
+        element: (
+          <PrivateRoute>
+            <Booking />
           </PrivateRoute>
         ),
       },
