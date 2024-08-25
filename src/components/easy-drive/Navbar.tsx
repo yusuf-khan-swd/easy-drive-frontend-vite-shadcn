@@ -245,7 +245,9 @@ const Navbar = () => {
             </NavLink>
           </div>
           <div className="hidden md:flex md:space-x-4">{menuItems}</div>
-          <div className="hidden md:flex md:space-x-4">{loginItems}</div>
+          <div className="hidden md:flex items-center md:space-x-4">
+            {loginItems}
+          </div>
           <div className="-mr-2 flex md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
