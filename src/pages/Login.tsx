@@ -1,5 +1,6 @@
 import { useLoginMutation } from "@/redux/api/auth/authApi";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface LoginFormData {
   email: string;
@@ -112,9 +113,9 @@ const Login = () => {
 
         <p className="mt-4 text-center">
           Don't have an account?{" "}
-          <a href="/register" className="text-blue-500 underline">
+          <Link to="/register" className="text-blue-500 underline">
             Sign Up Instead
-          </a>
+          </Link>
         </p>
 
         <div className="mt-4 text-sm text-center">

@@ -1,5 +1,6 @@
 import { useSignupMutation } from "@/redux/api/auth/authApi";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface SignUpFormData {
   name: string;
@@ -197,9 +198,9 @@ const Register = () => {
 
         <p className="mt-4 text-center">
           Already have an account?{" "}
-          <a href="/login" className="text-blue-500 underline">
+          <Link to="/login" className="text-blue-500 underline">
             Sign In Instead
-          </a>
+          </Link>
         </p>
 
         <div className="mt-4 text-sm text-center">
