@@ -15,6 +15,7 @@ import ErrorPage from "@/pages/ErrorPage";
 import Home from "@/pages/Home";
 import SignIn from "@/pages/SignIn";
 import SingUp from "@/pages/SingUp";
+import TermAndCondition from "@/pages/TermAndCondition";
 import { createBrowserRouter } from "react-router-dom";
 import AdminRoute from "./private/AdminRoute";
 import PrivateRoute from "./private/PrivateRoute";
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <SingUp />,
+      },
+      {
+        path: "/term-condition",
+        element: <TermAndCondition />,
       },
     ],
   },
