@@ -9,7 +9,7 @@ interface SignUpFormData {
   termsAccepted: boolean;
 }
 
-const SignUp = () => {
+const Register = () => {
   const [formData, setFormData] = useState<SignUpFormData>({
     name: "",
     email: "",
@@ -203,4 +203,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Register;
