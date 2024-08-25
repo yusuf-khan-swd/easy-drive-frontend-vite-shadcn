@@ -106,9 +106,9 @@ const Login = () => {
         </button>
 
         <p className="mt-4 text-center">
-          <a href="/forgot-password" className="text-blue-500 underline">
+          <Link to="/forgot-password" className="text-blue-500 underline">
             Forgot Password?
-          </a>
+          </Link>
         </p>
 
         <p className="mt-4 text-center">

@@ -13,6 +13,7 @@ import Dashboard from "@/pages/Dashboard/Dashboard";
 import MyBooking from "@/pages/Dashboard/UserDashboard/MyBooking";
 import MyPayment from "@/pages/Dashboard/UserDashboard/MyPayment";
 import ErrorPage from "@/pages/ErrorPage";
+import ForgotPassword from "@/pages/ForgotPassword";
 import Home from "@/pages/Home";
 import PrivacyAndPolicy from "@/pages/Legal/PrivacyAndPolicy";
 import TermAndCondition from "@/pages/Legal/TermAndCondition";
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/forgot-password",
+        element: <ForgotPassword />,
       },
       {
         path: "/terms",
