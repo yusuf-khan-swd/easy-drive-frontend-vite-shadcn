@@ -14,9 +14,11 @@ import MyBooking from "@/pages/Dashboard/UserDashboard/MyBooking";
 import MyPayment from "@/pages/Dashboard/UserDashboard/MyPayment";
 import ErrorPage from "@/pages/ErrorPage";
 import Home from "@/pages/Home";
+import PrivacyAndPolicy from "@/pages/Legal/PrivacyAndPolicy";
+import TermAndCondition from "@/pages/Legal/TermAndCondition";
+import TermOfService from "@/pages/Legal/TermOfService";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
-import TermAndCondition from "@/pages/TermAndCondition";
 import { createBrowserRouter } from "react-router-dom";
 import AdminRoute from "./private/AdminRoute";
 import PrivateRoute from "./private/PrivateRoute";
@@ -61,8 +63,16 @@ export const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/term-condition",
+        path: "/terms",
         element: <TermAndCondition />,
+      },
+      {
+        path: "/privacy",
+        element: <PrivacyAndPolicy />,
+      },
+      {
+        path: "/tos",
+        element: <TermOfService />,
       },
     ],
   },
