@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 
 interface ForgotPasswordFormData {
   email: string;
 }
 
-const ForgotPassword: React.FC = () => {
+const ForgotPassword = () => {
   const [formData, setFormData] = useState<ForgotPasswordFormData>({
     email: "",
   });
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [successMessage, setSuccessMessage] = useState<string>("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -33,7 +33,7 @@ const ForgotPassword: React.FC = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (validate()) {
       console.log("Password reset request for:", formData.email);
