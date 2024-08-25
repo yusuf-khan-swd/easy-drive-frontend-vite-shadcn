@@ -216,8 +216,8 @@ const Navbar = () => {
         to="/login"
         className={({ isActive }) =>
           isActive
-            ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-            : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
+            ? "text-blue-500 px-2 py-2 rounded-md text-sm font-medium"
+            : "text-gray-800 hover:text-gray-500 px-2 py-2 rounded-md text-sm font-medium"
         }
       >
         <Button variant="outline">Login</Button>
@@ -226,8 +226,8 @@ const Navbar = () => {
         to="/register"
         className={({ isActive }) =>
           isActive
-            ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-            : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
+            ? "text-blue-500 px-2 py-2 rounded-md text-sm font-medium"
+            : "text-gray-800 hover:text-gray-500 px-2 py-2 rounded-md text-sm font-medium"
         }
       >
         <Button variant="outline">Register</Button>
@@ -245,7 +245,7 @@ const Navbar = () => {
             </NavLink>
           </div>
           <div className="hidden md:flex md:space-x-4">{menuItems}</div>
-          <div className="hidden md:flex items-center md:space-x-4">
+          <div className="hidden md:flex items-center md:space-x-1">
             {loginItems}
           </div>
           <div className="-mr-2 flex md:hidden">
