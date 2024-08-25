@@ -189,6 +189,29 @@ const Navbar = () => {
 
   const loginItems = (
     <>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline">
+            <User className="mr-2 h-4 w-4" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="w-56">
+          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuGroup>
+            <DropdownMenuItem>
+              <User className="mr-2 h-4 w-4" />
+              <span>Profile</span>
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
+
+          <DropdownMenuSeparator />
+          <DropdownMenuItem>
+            <LogOut className="mr-2 h-4 w-4" />
+            <span>Log out</span>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
       <NavLink
         to="/login"
         className={({ isActive }) =>
@@ -197,7 +220,7 @@ const Navbar = () => {
             : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
         }
       >
-        <Button>Login</Button>
+        <Button variant="outline">Login</Button>
       </NavLink>
       <NavLink
         to="/register"
@@ -207,7 +230,7 @@ const Navbar = () => {
             : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
         }
       >
-        <Button>Register</Button>
+        <Button variant="outline">Register</Button>
       </NavLink>
     </>
   );
