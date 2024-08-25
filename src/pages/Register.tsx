@@ -204,13 +204,13 @@ const Register = () => {
         </p>
 
         <div className="mt-4 text-sm text-center">
-          <a href="/privacy" className="text-gray-600 underline">
+          <Link to="/privacy" className="text-gray-600 underline">
             Privacy Policy
-          </a>{" "}
+          </Link>{" "}
           |
-          <a href="/tos" className="text-gray-600 underline ml-2">
+          <Link to="/tos" className="text-gray-600 underline ml-2">
             Terms of Service
-          </a>
+          </Link>
         </div>
       </form>
     </div>
