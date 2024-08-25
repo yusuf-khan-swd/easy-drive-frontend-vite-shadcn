@@ -150,6 +150,16 @@ const Navbar = () => {
             >
               About Us
             </NavLink>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
+                  : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
+              }
+            >
+              Contact Us
+            </NavLink>
           </div>
           <div className="hidden md:flex md:space-x-4">
             <NavLink

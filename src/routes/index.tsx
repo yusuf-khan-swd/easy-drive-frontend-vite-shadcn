@@ -4,6 +4,7 @@ import AboutUs from "@/pages/AboutUs";
 import Booking from "@/pages/Booking";
 import CarDetails from "@/pages/CarDetails";
 import Cars from "@/pages/Cars";
+import ContactUsPage from "@/pages/Contact";
 import ManageBookings from "@/pages/Dashboard/AdminDashboard/ManageBookings";
 import ManageCars from "@/pages/Dashboard/AdminDashboard/ManageCars";
 import ManageReturnCars from "@/pages/Dashboard/AdminDashboard/ManageReturnCars";
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
       {
         path: "/about",
         element: <AboutUs />,
+      },
+      {
+        path: "/contact",
+        element: <ContactUsPage />,
       },
       {
         path: "/login",
