@@ -179,9 +179,9 @@ const Register = () => {
             />
             <span className="ml-2 text-gray-700">
               I accept the{" "}
-              <a href="/terms" className="text-blue-500 underline">
+              <Link to="/terms" className="text-blue-500 underline">
                 Terms & Conditions
-              </a>
+              </Link>
             </span>
           </label>
           {errors.termsAccepted && (
