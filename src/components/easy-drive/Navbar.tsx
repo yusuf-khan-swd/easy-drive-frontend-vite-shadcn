@@ -272,16 +272,7 @@ const Navbar = () => {
             >
               About Us
             </NavLink>
-            <NavLink
-              to="/login"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-blue-500 block px-3 py-2 rounded-md text-base font-medium"
-                  : "text-gray-800 hover:text-gray-500 block px-3 py-2 rounded-md text-base font-medium"
-              }
-            >
-              Login
-            </NavLink>
+            {loginItems}
           </div>
         </div>
       )}
