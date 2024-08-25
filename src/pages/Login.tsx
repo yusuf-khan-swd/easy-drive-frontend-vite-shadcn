@@ -51,7 +51,7 @@ const Login = () => {
         className="bg-white border p-8 rounded shadow-md w-full max-w-md"
         onSubmit={handleSubmit}
       >
-        <h2 className="text-2xl font-bold mb-6">Sign In</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">Sign In</h2>
 
         <div className="mb-4">
           <label htmlFor="email" className="block text-gray-700">
