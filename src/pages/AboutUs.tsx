@@ -1,3 +1,6 @@
+import team1 from "@/assets/team1.png";
+import team2 from "@/assets/team2.png";
+
 const AboutUs = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-4">
@@ -27,7 +30,7 @@ const AboutUs = () => {
           {/* Team Member 1 */}
           <div className="flex flex-col items-center">
             <img
-              src="/images/team/john_doe.jpg"
+              src={team1}
               alt="John Doe"
               className="w-32 h-32 rounded-full mb-4"
             />
@@ -37,7 +40,7 @@ const AboutUs = () => {
           {/* Team Member 2 */}
           <div className="flex flex-col items-center">
             <img
-              src="/images/team/jane_smith.jpg"
+              src={team2}
               alt="Jane Smith"
               className="w-32 h-32 rounded-full mb-4"
             />
