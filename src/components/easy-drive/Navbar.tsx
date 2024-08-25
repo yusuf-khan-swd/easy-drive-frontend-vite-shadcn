@@ -95,6 +95,7 @@
 // src/components/Navbar.tsx
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { Button } from "../ui/button";
 
 const Navbar = () => {
   const websiteName = "EasyDrive";
@@ -170,7 +171,7 @@ const Navbar = () => {
                   : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
               }
             >
-              Login
+              <Button>Login</Button>
             </NavLink>
             <NavLink
               to="/register"
@@ -180,7 +181,7 @@ const Navbar = () => {
                   : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
               }
             >
-              Register
+              <Button>Register</Button>
             </NavLink>
           </div>
           <div className="-mr-2 flex md:hidden">
