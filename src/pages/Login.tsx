@@ -1,3 +1,4 @@
+import { useLoginMutation } from "@/redux/api/auth/authApi";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 interface LoginFormData {
@@ -6,6 +7,8 @@ interface LoginFormData {
 }
 
 const Login = () => {
+  const [login] = useLoginMutation();
+
   const [formData, setFormData] = useState<LoginFormData>({
     email: "",
     password: "",
@@ -36,12 +39,15 @@ const Login = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (validate()) {
       console.log("Logging in with:", formData);
       // Perform login operation
       // Redirect to dashboard if successful
+
+      const result = await login(formData);
+      console.log(result);
     }
   };
 
