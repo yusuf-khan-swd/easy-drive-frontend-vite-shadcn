@@ -26,9 +26,9 @@ const Register = () => {
     // console.log("our input", { name, email, password, role }, "output:", user);
   };
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-800 via-red-700 to-green-600">
-      <div className="w-full max-w-md bg-white shadow-md rounded-lg p-8">
-        <h2 className="text-2xl font-semibold text-center text-red-700">
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="border w-full max-w-md bg-white shadow-md rounded-lg p-8">
+        <h2 className="text-2xl font-semibold text-center text-blue-700">
           Register
         </h2>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
@@ -98,7 +98,7 @@ const Register = () => {
           <div>
             <button
               type="submit"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-700 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-700"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-700 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-700"
             >
               Register
             </button>
@@ -109,7 +109,7 @@ const Register = () => {
             Already have an account?{" "}
             <Link
               to="/login"
-              className="font-medium text-red-700 hover:text-red-500"
+              className="font-medium text-blue-700 hover:text-blue-500"
             >
               Sign in
             </Link>
