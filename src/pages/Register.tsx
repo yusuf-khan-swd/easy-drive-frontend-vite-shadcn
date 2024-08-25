@@ -1,3 +1,4 @@
+import { useSignupMutation } from "@/redux/api/auth/authApi";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 interface SignUpFormData {
@@ -10,6 +11,8 @@ interface SignUpFormData {
 }
 
 const Register = () => {
+  const [signup] = useSignupMutation();
+
   const [formData, setFormData] = useState<SignUpFormData>({
     name: "",
     email: "",
@@ -50,10 +53,20 @@ const Register = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (validate()) {
       console.log("Form submitted:", formData);
+      const { name, email, password, phone } = formData;
+
+      console.log(name);
+
+      const registerData = { name, email, password, phone };
+      console.log(registerData);
+
+      const result = await signup(registerData).unwrap();
+      console.log(result);
+
       // Redirect or clear the form
     }
   };
