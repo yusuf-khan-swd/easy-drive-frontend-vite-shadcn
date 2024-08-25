@@ -1,100 +1,126 @@
-// import { jwtDecode } from "jwt-decode";
-import React from "react";
-import { Link } from "react-router-dom";
-// import { setName, setPassword } from "../redux/features/loginSlice";
-// import { setToken } from "../redux/features/userSlice";
-// import { useAppDispatch, useAppSelector } from "../redux/hooks";
-// import { RootState } from "../redux/store";
+import React, { useState } from "react";
 
-const Login = () => {
-  // const dispatch = useAppDispatch();
-  // const { name, password } = useAppSelector((state: RootState) => state.login);
+interface LoginFormData {
+  email: string;
+  password: string;
+}
 
-  // const { token } = useAppSelector((state: RootState) => state.user);
+const Login: React.FC = () => {
+  const [formData, setFormData] = useState<LoginFormData>({
+    email: "",
+    password: "",
+  });
 
-  // console.log({ token });
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
-  // const [login] = useLoginMutation();
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const validate = (): boolean => {
+    const newErrors: { [key: string]: string } = {};
+
+    if (!formData.email) {
+      newErrors.email = "Email is required.";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email format is invalid.";
+    }
+
+    if (!formData.password) newErrors.password = "Password is required.";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // const { data } = await login({ username: name, password });
-
-    // const { token } = data?.data;
-
-    // const user = jwtDecode(token);
-
-    // console.log({ token, user });
-    // dispatch(setToken(token));
+    if (validate()) {
+      console.log("Logging in with:", formData);
+      // Perform login operation
+      // Redirect to dashboard if successful
+    }
   };
 
   return (
-    <div className="min-h-[70vh] flex items-center justify-center">
-      <div className="border w-full max-w-md bg-white shadow-md rounded-lg p-8">
-        <h2 className="text-2xl font-semibold text-center text-blue-700">
-          Login
-        </h2>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-700"
-            >
-              User name
-            </label>
-            <input
-              type="text"
-              id="name"
-              // value={name}
-              // onChange={(e) => dispatch(setName(e.target.value))}
-              required
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-700 focus:border-green-700 sm:text-sm"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              // value={password}
-              // onChange={(e) => dispatch(setPassword(e.target.value))}
-              required
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-700 focus:border-green-700 sm:text-sm"
-            />
-          </div>
-          <div className="flex items-center justify-between">
-            <div className="text-sm">
-              <Link
-                to="/register"
-                className="font-medium text-blue-700 hover:text-blue-500"
-              >
-                New here? Register now
-              </Link>
-            </div>
-            <div className="text-sm">
-              <a
-                href="#"
-                className="font-medium text-blue-700 hover:text-blue-500"
-              >
-                Forgot your password?
-              </a>
-            </div>
-          </div>
-          <div>
-            <button
-              type="submit"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-700 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-700"
-            >
-              Sign in
-            </button>
-          </div>
-        </form>
-      </div>
+    <div className="min-h-[60vh] flex items-center justify-center">
+      <form
+        className="bg-white border p-8 rounded shadow-md w-full max-w-md"
+        onSubmit={handleSubmit}
+      >
+        <h2 className="text-2xl font-bold mb-6">Sign In</h2>
+
+        <div className="mb-4">
+          <label htmlFor="email" className="block text-gray-700">
+            Email Address
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-700 focus:border-blue-700 sm:text-sm ${
+              errors.email ? "border-red-500" : "border-gray-300"
+            }`}
+          />
+          {errors.email && (
+            <p className="text-red-500 text-xs">{errors.email}</p>
+          )}
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="password" className="block text-gray-700">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-700 focus:border-blue-700 sm:text-sm ${
+              errors.password ? "border-red-500" : "border-gray-300"
+            }`}
+          />
+          {errors.password && (
+            <p className="text-red-500 text-xs">{errors.password}</p>
+          )}
+        </div>
+
+        <button
+          type="submit"
+          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+        >
+          Sign In
+        </button>
+
+        <p className="mt-4 text-center">
+          <a href="/forgot-password" className="text-blue-500 underline">
+            Forgot Password?
+          </a>
+        </p>
+
+        <p className="mt-4 text-center">
+          Don't have an account?{" "}
+          <a href="/register" className="text-blue-500 underline">
+            Sign Up Instead
+          </a>
+        </p>
+
+        <div className="mt-4 text-sm text-center">
+          <a href="/privacy" className="text-gray-600 underline">
+            Privacy Policy
+          </a>{" "}
+          |
+          <a href="/tos" className="text-gray-600 underline ml-2">
+            Terms of Service
+          </a>
+        </div>
+      </form>
     </div>
   );
 };
