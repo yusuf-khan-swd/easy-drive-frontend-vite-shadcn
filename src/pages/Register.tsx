@@ -1,4 +1,4 @@
-const SingUp = () => {
+const Register = () => {
   return (
     <div>
       <h1>Sign Up Page</h1>
@@ -6,4 +6,4 @@ const SingUp = () => {
   );
 };
 
-export default SingUp;
+export default Register;
