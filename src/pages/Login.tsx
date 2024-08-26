@@ -1,5 +1,5 @@
 import { useLoginMutation } from "@/redux/api/auth/authApi";
-import { setToken } from "@/redux/features/authSlice";
+import { setToken, setUser } from "@/redux/features/authSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { jwtDecode } from "jwt-decode";
 import { ChangeEvent, FormEvent, useState } from "react";
@@ -58,6 +58,7 @@ const Login = () => {
         const token = result?.data?.token;
         const user = result?.data?.user;
         dispatch(setToken(token));
+        dispatch(setUser(user));
 
         const decodedToken = jwtDecode(token);
         console.log({ decodedToken });
