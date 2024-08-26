@@ -93,7 +93,7 @@ const DashboardLayout = () => {
         </DrawerContent>
       </Drawer>
 
-      <main className="container mx-auto p-4">
+      <main className="container mx-auto p-4 min-h-screen">
         <Outlet />
       </main>
       <Footer />
