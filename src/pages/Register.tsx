@@ -1,4 +1,4 @@
-import { useSignupMutation } from "@/redux/api/auth/authApi";
+import { useSignupMutation } from "@/redux/api/authApi";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 

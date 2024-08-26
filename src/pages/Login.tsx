@@ -1,4 +1,4 @@
-import { useLoginMutation } from "@/redux/api/auth/authApi";
+import { useLoginMutation } from "@/redux/api/authApi";
 import { setToken, setUser } from "@/redux/features/authSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { jwtDecode } from "jwt-decode";
