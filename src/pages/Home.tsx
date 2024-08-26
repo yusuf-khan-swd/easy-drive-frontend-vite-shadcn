@@ -7,9 +7,11 @@ const Home = () => {
   return (
     <div>
       <Banner />
-      <FeaturedCars />
-      <WhyChooseUs />
-      <CustomerTestimonials />
+      <div className="container mx-auto p-4">
+        <FeaturedCars />
+        <WhyChooseUs />
+        <CustomerTestimonials />
+      </div>
     </div>
   );
 };
