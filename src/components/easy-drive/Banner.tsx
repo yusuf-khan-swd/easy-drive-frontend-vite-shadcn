@@ -75,7 +75,7 @@ const Banner = () => {
         <img
           src={banner_car}
           alt="Car Banner"
-          className="w-full h-auto object-contain border"
+          className="w-full h-auto object-contain"
         />
       </div>
     </div>
