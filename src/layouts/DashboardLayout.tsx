@@ -20,7 +20,7 @@ const DashboardLayout = () => {
       <Navbar />
       <Drawer>
         <DrawerTrigger asChild>
-          <Button variant="outline">Open Drawer</Button>
+          <Button variant="outline">Open Dashboard Menu</Button>
         </DrawerTrigger>
         <DrawerContent>
           <div className="mx-auto w-full max-w-sm">
@@ -93,7 +93,9 @@ const DashboardLayout = () => {
         </DrawerContent>
       </Drawer>
 
-      <Outlet />
+      <main className="container mx-auto p-4">
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );
