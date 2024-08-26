@@ -41,14 +41,19 @@ const Login = () => {
   };
 
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    if (validate()) {
-      console.log("Logging in with:", formData);
-      // Perform login operation
-      // Redirect to dashboard if successful
+    try {
+      e.preventDefault();
+      if (validate()) {
+        console.log("Logging in with:", formData);
+        // Perform login operation
+        // Redirect to dashboard if successful
 
-      const result = await login(formData);
-      console.log(result);
+        const result = await login(formData).unwrap();
+        // const token = result?.data
+        console.log(result);
+      }
+    } catch (error) {
+      console.log("Error: ", error);
     }
   };
 
