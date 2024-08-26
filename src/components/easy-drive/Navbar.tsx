@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "../ui/button";
 
+import logo from "@/assets/logo.png";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -140,7 +141,8 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <NavLink to="/" className="text-2xl font-bold text-gray-900">
+            <NavLink to="/" className="flex text-2xl font-bold text-gray-900">
+              <img src={logo} alt="EasyDriveLogo" className="mr-2" />
               {websiteName}
             </NavLink>
           </div>
