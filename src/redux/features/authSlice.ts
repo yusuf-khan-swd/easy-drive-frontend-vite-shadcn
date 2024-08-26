@@ -38,6 +38,7 @@ const authSlice = createSlice({
       state.user = { ...action.payload };
     },
     setLogout: (state) => {
+      localStorage.removeItem("easy-drive-token");
       state.token = "";
       state.user = {
         _id: "",
