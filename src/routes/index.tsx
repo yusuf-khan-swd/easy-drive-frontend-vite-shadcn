@@ -40,9 +40,18 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/booking",
+        element: (
+          <PrivateRoute>
+            <Booking />
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "/cars",
         element: <Cars />,
       },
+
       {
         path: "/cars/:id",
         element: <CarDetails />,
@@ -98,14 +107,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: "/dashboard/booking",
-        element: (
-          <PrivateRoute>
-            <Booking />
-          </PrivateRoute>
-        ),
-      },
+
       {
         path: "/dashboard/user/my-booking",
         element: (
@@ -122,7 +124,6 @@ export const router = createBrowserRouter([
           </UserRoute>
         ),
       },
-
       {
         path: "/dashboard/admin/manage-cars",
         element: (

@@ -48,7 +48,7 @@ const Navbar = () => {
         Cars
       </NavLink>
       <NavLink
-        to="/dashboard/booking"
+        to="/booking"
         className={({ isActive }) =>
           isActive
             ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
