@@ -6,7 +6,6 @@ import WhyChooseUs from "@/components/easy-drive/WhyChooseUs";
 const Home = () => {
   return (
     <div>
-      <h1>Home Page</h1>
       <Banner />
       <FeaturedCars />
       <WhyChooseUs />
