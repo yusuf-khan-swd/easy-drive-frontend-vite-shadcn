@@ -59,6 +59,7 @@ const Login = () => {
         const user = result?.data?.user;
         dispatch(setToken(token));
         dispatch(setUser(user));
+        localStorage.setItem("easy-drive-token", token);
 
         const decodedToken = jwtDecode(token);
         console.log({ decodedToken });
