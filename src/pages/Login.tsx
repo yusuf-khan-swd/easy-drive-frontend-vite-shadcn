@@ -3,6 +3,7 @@ import { setToken, setUser } from "@/redux/features/authSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { jwtDecode } from "jwt-decode";
 import { ChangeEvent, FormEvent, useState } from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 interface LoginFormData {
@@ -61,13 +62,16 @@ const Login = () => {
         dispatch(setUser(user));
         localStorage.setItem("easy-drive-token", token);
 
+        toast.success("Login Success!!");
+
         const decodedToken = jwtDecode(token);
         console.log({ decodedToken });
 
         console.log({ token, user });
       }
-    } catch (error) {
+    } catch (error: any) {
       console.log("Error: ", error);
+      toast.error(error?.data?.message || "login failed");
     }
   };
 
