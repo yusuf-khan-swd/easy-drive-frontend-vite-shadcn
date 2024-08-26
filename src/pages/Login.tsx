@@ -1,4 +1,5 @@
 import { useLoginMutation } from "@/redux/api/auth/authApi";
+import { jwtDecode } from "jwt-decode";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -49,8 +50,15 @@ const Login = () => {
         // Redirect to dashboard if successful
 
         const result = await login(formData).unwrap();
-        // const token = result?.data
         console.log(result);
+
+        const token = result?.data?.token;
+        const user = result?.data?.user;
+
+        const decodedToken = jwtDecode(token);
+        console.log({ decodedToken });
+
+        console.log({ token, user });
       }
     } catch (error) {
       console.log("Error: ", error);
