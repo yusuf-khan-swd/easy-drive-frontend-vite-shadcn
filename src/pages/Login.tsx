@@ -4,7 +4,7 @@ import { useAppDispatch } from "@/redux/hooks";
 import { jwtDecode } from "jwt-decode";
 import { ChangeEvent, FormEvent, useState } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface LoginFormData {
   email: string;
@@ -14,6 +14,7 @@ interface LoginFormData {
 const Login = () => {
   const dispatch = useAppDispatch();
   const [login] = useLoginMutation();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState<LoginFormData>({
     email: "",
@@ -63,6 +64,7 @@ const Login = () => {
         localStorage.setItem("easy-drive-token", token);
 
         toast.success("Login Success!!");
+        navigate("/dashboard");
 
         const decodedToken = jwtDecode(token);
         console.log({ decodedToken });
