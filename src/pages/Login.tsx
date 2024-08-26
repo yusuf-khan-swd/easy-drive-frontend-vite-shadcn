@@ -1,4 +1,6 @@
 import { useLoginMutation } from "@/redux/api/auth/authApi";
+import { setToken } from "@/redux/features/authSlice";
+import { useAppDispatch } from "@/redux/hooks";
 import { jwtDecode } from "jwt-decode";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
@@ -9,6 +11,7 @@ interface LoginFormData {
 }
 
 const Login = () => {
+  const dispatch = useAppDispatch();
   const [login] = useLoginMutation();
 
   const [formData, setFormData] = useState<LoginFormData>({
@@ -54,6 +57,7 @@ const Login = () => {
 
         const token = result?.data?.token;
         const user = result?.data?.user;
+        dispatch(setToken(token));
 
         const decodedToken = jwtDecode(token);
         console.log({ decodedToken });
