@@ -1,6 +1,7 @@
 import { useSignupMutation } from "@/redux/api/authApi";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 
 interface SignUpFormData {
   name: string;
@@ -13,6 +14,7 @@ interface SignUpFormData {
 
 const Register = () => {
   const [signup] = useSignupMutation();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState<SignUpFormData>({
     name: "",
@@ -55,20 +57,27 @@ const Register = () => {
   };
 
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    if (validate()) {
-      console.log("Form submitted:", formData);
-      const { name, email, password, phone } = formData;
+    try {
+      e.preventDefault();
+      if (validate()) {
+        console.log("Form submitted:", formData);
+        const { name, email, password, phone } = formData;
 
-      console.log(name);
+        console.log(name);
 
-      const registerData = { name, email, password, phone };
-      console.log(registerData);
+        const registerData = { name, email, password, phone };
+        console.log(registerData);
 
-      const result = await signup(registerData).unwrap();
-      console.log(result);
+        const result = await signup(registerData).unwrap();
+        console.log(result);
 
-      // Redirect or clear the form
+        // Redirect
+        navigate("/login");
+        toast.success("Registration Success");
+      }
+    } catch (error: any) {
+      console.log("Error: ", error);
+      toast.error(error?.data?.message || "login failed");
     }
   };
 
