@@ -12,14 +12,14 @@ const carApi = baseApi.injectEndpoints({
       }),
     }),
 
-    getAllCars: builder.mutation({
+    getAllCars: builder.query({
       query: () => ({
         url: `${CAR_URL}`,
         method: "GET",
       }),
     }),
 
-    getSingleCar: builder.mutation({
+    getSingleCar: builder.query({
       query: (id: string) => ({
         url: `${CAR_URL}/${id}`,
         method: "GET",
