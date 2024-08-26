@@ -3,7 +3,7 @@ import { useGetAllCarsQuery } from "@/redux/api/carApi";
 
 const Cars = () => {
   const { data, isLoading } = useGetAllCarsQuery(undefined);
-  const cars = data.data;
+  const cars = data?.data;
 
   console.log(cars);
 
