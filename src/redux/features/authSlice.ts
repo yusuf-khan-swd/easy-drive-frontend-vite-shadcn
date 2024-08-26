@@ -3,10 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface IUser {
   _id: string;
+  name: string;
   email: string;
   role: string;
-  exp: string;
-  iat: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface IUserState {
@@ -18,10 +19,11 @@ const initialState: IUserState = {
   token: "",
   user: {
     _id: "",
+    name: "",
     email: "",
     role: "",
-    exp: "",
-    iat: "",
+    createdAt: "",
+    updatedAt: "",
   },
 };
 
