@@ -15,7 +15,7 @@ const Banner = () => {
   return (
     <div className="flex flex-col lg:flex-row items-center bg-gray-100 py-12 lg:py-24 px-6 lg:px-12">
       {/* Left side: Text content */}
-      <div className="flex-1 flex flex-col justify-center items-start text-left mb-8 lg:mb-0 lg:pr-12">
+      <div className="flex-1 flex flex-col justify-center items-center lg:items-start text-center lg:text-left mb-8 lg:mb-0 lg:pr-12">
         <h1 className="text-4xl md:text-5xl font-bold text-blue-700 mb-4">
           Find Your Perfect Ride with EasyDrive
         </h1>
