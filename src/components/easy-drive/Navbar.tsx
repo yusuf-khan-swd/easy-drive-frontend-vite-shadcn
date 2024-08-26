@@ -12,10 +12,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useAppSelector } from "@/redux/hooks";
 
 const Navbar = () => {
   const websiteName = "EasyDrive";
   const [isOpen, setIsOpen] = useState(false);
+  const { token } = useAppSelector((state) => state.auth);
 
   const menuItems = (
     <>
@@ -74,51 +76,56 @@ const Navbar = () => {
 
   const loginItems = (
     <>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline">
-            <User className="mr-2 h-4 w-4" />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56">
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <Link to={"/dashboard"}>
-              <DropdownMenuItem>
-                <User className="mr-2 h-4 w-4" />
-                <span>Profile</span>
-              </DropdownMenuItem>
-            </Link>
-          </DropdownMenuGroup>
+      {token ? (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline">
+              <User className="mr-2 h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-56">
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <Link to={"/dashboard"}>
+                <DropdownMenuItem>
+                  <User className="mr-2 h-4 w-4" />
+                  <span>Profile</span>
+                </DropdownMenuItem>
+              </Link>
+            </DropdownMenuGroup>
 
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <LogOut className="mr-2 h-4 w-4" />
-            <span>Log out</span>
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-      <NavLink
-        to="/login"
-        className={({ isActive }) =>
-          isActive
-            ? "text-blue-500 px-2 py-2 rounded-md text-sm font-medium"
-            : "text-gray-800 hover:text-gray-500 px-2 py-2 rounded-md text-sm font-medium"
-        }
-      >
-        <Button variant="outline">Login</Button>
-      </NavLink>
-      <NavLink
-        to="/register"
-        className={({ isActive }) =>
-          isActive
-            ? "text-blue-500 px-2 py-2 rounded-md text-sm font-medium"
-            : "text-gray-800 hover:text-gray-500 px-2 py-2 rounded-md text-sm font-medium"
-        }
-      >
-        <Button variant="outline">Register</Button>
-      </NavLink>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              <LogOut className="mr-2 h-4 w-4" />
+              <span>Log out</span>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      ) : (
+        <>
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              isActive
+                ? "text-blue-500 px-2 py-2 rounded-md text-sm font-medium"
+                : "text-gray-800 hover:text-gray-500 px-2 py-2 rounded-md text-sm font-medium"
+            }
+          >
+            <Button variant="outline">Login</Button>
+          </NavLink>
+          <NavLink
+            to="/register"
+            className={({ isActive }) =>
+              isActive
+                ? "text-blue-500 px-2 py-2 rounded-md text-sm font-medium"
+                : "text-gray-800 hover:text-gray-500 px-2 py-2 rounded-md text-sm font-medium"
+            }
+          >
+            <Button variant="outline">Register</Button>
+          </NavLink>
+        </>
+      )}
     </>
   );
 
