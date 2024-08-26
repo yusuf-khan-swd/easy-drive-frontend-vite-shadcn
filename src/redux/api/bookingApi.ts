@@ -4,22 +4,32 @@ const BOOKING_URL = "/bookings";
 
 const bookingApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    login: builder.mutation({
-      query: (loginData) => ({
-        url: `${BOOKING_URL}/login`,
+    createBooking: builder.mutation({
+      query: (bookingData) => ({
+        url: `${BOOKING_URL}`,
         method: "POST",
-        body: loginData,
+        body: bookingData,
       }),
     }),
 
-    signup: builder.mutation({
-      query: (signupData) => ({
-        url: `${BOOKING_URL}/signup`,
-        method: "POST",
-        body: signupData,
+    getAllBookings: builder.query({
+      query: () => ({
+        url: `${BOOKING_URL}`,
+        method: "GET",
+      }),
+    }),
+
+    myBooking: builder.query({
+      query: () => ({
+        url: `${BOOKING_URL}/my-bookings`,
+        method: "GET",
       }),
     }),
   }),
 });
 
-export const { useLoginMutation, useSignupMutation } = bookingApi;
+export const {
+  useCreateBookingMutation,
+  useGetAllBookingsQuery,
+  useMyBookingQuery,
+} = bookingApi;
