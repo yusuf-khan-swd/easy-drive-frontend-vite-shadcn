@@ -5,6 +5,7 @@ import Booking from "@/pages/Booking";
 import CarDetails from "@/pages/CarDetails";
 import Cars from "@/pages/Cars";
 import ContactUsPage from "@/pages/Contact";
+import CreateCar from "@/pages/Dashboard/AdminDashboard/CreateCar";
 import ManageBookings from "@/pages/Dashboard/AdminDashboard/ManageBookings";
 import ManageCars from "@/pages/Dashboard/AdminDashboard/ManageCars";
 import ManageReturnCars from "@/pages/Dashboard/AdminDashboard/ManageReturnCars";
@@ -107,7 +108,6 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-
       {
         path: "/dashboard/user/my-booking",
         element: (
@@ -124,11 +124,20 @@ export const router = createBrowserRouter([
           </UserRoute>
         ),
       },
+
       {
         path: "/dashboard/admin/manage-cars",
         element: (
           <AdminRoute>
             <ManageCars />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/admin/create-cars",
+        element: (
+          <AdminRoute>
+            <CreateCar />
           </AdminRoute>
         ),
       },

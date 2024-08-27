@@ -35,6 +35,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Link } from "react-router-dom";
 
 const data: Payment[] = [
   {
@@ -200,7 +201,9 @@ const ManageCars = () => {
       <div className="flex justify-between">
         <h2 className="text-2xl font-bold">Manage Cars</h2>
         <div>
-          <Button>Create</Button>
+          <Link to="/dashboard/admin/create-cars">
+            <Button>Create</Button>
+          </Link>
         </div>
       </div>
       <div className="w-full">
