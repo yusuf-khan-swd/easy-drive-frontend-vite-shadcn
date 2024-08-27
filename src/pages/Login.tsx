@@ -55,7 +55,6 @@ const Login = () => {
         // Redirect to dashboard if successful
 
         const result = await login(formData).unwrap();
-        console.log(result);
 
         const token = result?.data?.token;
         const user = result?.data?.user;
@@ -68,8 +67,6 @@ const Login = () => {
 
         const decodedToken = jwtDecode(token);
         console.log({ decodedToken });
-
-        console.log({ token, user });
       }
     } catch (error: any) {
       console.log("Error: ", error);
