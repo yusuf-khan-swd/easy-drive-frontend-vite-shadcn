@@ -68,7 +68,7 @@ export const dashboardItems = (role: string) => {
           isActive ? activeLinkStyle : unActiveLinkStyle
         }
       >
-        Manage Return Cars
+        Manage Users
       </NavLink>
     </>
   );
