@@ -47,7 +47,7 @@ const DashboardNavbar = () => {
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem onClick={handleLogout}>
+            <DropdownMenuItem>
               <NavLink
                 to="/home"
                 className={({ isActive }) =>
