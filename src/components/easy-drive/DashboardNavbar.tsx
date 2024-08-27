@@ -61,7 +61,7 @@ const DashboardNavbar = () => {
             </DropdownMenuItem>
             <DropdownMenuItem>
               <NavLink
-                to="/home"
+                to="/dashboard"
                 className={({ isActive }) =>
                   isActive
                     ? "text-blue-500 flex px-3 py-2 rounded-md text-sm font-medium"
