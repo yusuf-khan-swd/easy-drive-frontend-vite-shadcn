@@ -123,7 +123,7 @@ const DashboardNavbar = () => {
                     <DrawerTitle>Dashboard Menu</DrawerTitle>
                     <DrawerDescription>Click to change pages</DrawerDescription>
                   </DrawerHeader>
-                  <div className="p-4 pb-0">
+                  <div className="p-4 pb-10">
                     <div className="mt-3 h-[120px]">
                       <div className="flex flex-col">
                         {dashboardItems(role)}
