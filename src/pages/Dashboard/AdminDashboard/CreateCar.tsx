@@ -1,3 +1,4 @@
+import { useCreateCarMutation } from "@/redux/api/carApi";
 import { ChangeEvent, FormEvent, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -11,6 +12,15 @@ interface CreateCarFormData {
 }
 
 const CreateCar = () => {
+  const res =
+    import.meta.env.NODE_ENV === "development"
+      ? "http://localhost:5000/api"
+      : "https://easydrive-backend.vercel.app/api";
+
+  console.log(res);
+
+  const [createCar, { isLoading }] = useCreateCarMutation();
+
   const [formData, setFormData] = useState<CreateCarFormData>({
     name: "",
     description: "",
@@ -73,11 +83,15 @@ const CreateCar = () => {
       e.preventDefault();
       if (validate()) {
         console.log("Form submitted:", formData);
-        // Further processing such as API calls can be added here
+        const { pricePerHour } = formData;
+        const carData = { ...formData, pricePerHour: Number(pricePerHour) };
+
+        const result = await createCar(carData).unwrap();
+        toast.success(result?.message || "Car Created Successfully");
       }
     } catch (error: any) {
       console.log("Error: ", error);
-      toast.error(error?.data?.message || "Registration failed");
+      toast.error(error?.data?.message || "Car create failed");
     }
   };
 
@@ -210,6 +224,7 @@ const CreateCar = () => {
 
         <button
           type="submit"
+          disabled={isLoading}
           className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
         >
           Add
