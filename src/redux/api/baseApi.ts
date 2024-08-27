@@ -1,3 +1,4 @@
+import { getBaseUrl } from "@/helpers/getBaseUrl ";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const TOKEN = localStorage.getItem("easy-drive-token");
@@ -5,7 +6,7 @@ const TOKEN = localStorage.getItem("easy-drive-token");
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api",
+    baseUrl: getBaseUrl(),
     headers: { Authorization: `Bearer ${TOKEN}` },
   }),
   endpoints: () => ({}),
