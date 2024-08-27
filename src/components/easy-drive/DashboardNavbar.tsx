@@ -24,12 +24,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { setLogout } from "@/redux/features/authSlice";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useAppDispatch } from "@/redux/hooks";
 
 const DashboardNavbar = () => {
   const websiteName = "EasyDrive";
   const [isOpen, setIsOpen] = useState(false);
-  const { token } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
   const handleLogout = () => {
@@ -93,56 +92,31 @@ const DashboardNavbar = () => {
 
   const loginItems = (
     <>
-      {token ? (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline">
-              <User className="mr-2 h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <Link to={"/dashboard"}>
-                <DropdownMenuItem>
-                  <User className="mr-2 h-4 w-4" />
-                  <span>Dashboard</span>
-                </DropdownMenuItem>
-              </Link>
-            </DropdownMenuGroup>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline">
+            <User className="mr-2 h-4 w-4" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="w-56">
+          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuGroup>
+            <Link to={"/dashboard"}>
+              <DropdownMenuItem>
+                <User className="mr-2 h-4 w-4" />
+                <span>Dashboard</span>
+              </DropdownMenuItem>
+            </Link>
+          </DropdownMenuGroup>
 
-            <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={handleLogout}>
-              <LogOut className="mr-2 h-4 w-4" />
-              <span>Log out</span>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      ) : (
-        <>
-          <NavLink
-            to="/login"
-            className={({ isActive }) =>
-              isActive
-                ? "text-blue-500 px-2 py-2 rounded-md text-sm font-medium"
-                : "text-gray-800 hover:text-gray-500 px-2 py-2 rounded-md text-sm font-medium"
-            }
-          >
-            <Button variant="outline">Login</Button>
-          </NavLink>
-          <NavLink
-            to="/register"
-            className={({ isActive }) =>
-              isActive
-                ? "text-blue-500 px-2 py-2 rounded-md text-sm font-medium"
-                : "text-gray-800 hover:text-gray-500 px-2 py-2 rounded-md text-sm font-medium"
-            }
-          >
-            <Button variant="outline">Register</Button>
-          </NavLink>
-        </>
-      )}
+          <DropdownMenuSeparator />
+          <DropdownMenuItem onClick={handleLogout}>
+            <LogOut className="mr-2 h-4 w-4" />
+            <span>Log out</span>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </>
   );
 
