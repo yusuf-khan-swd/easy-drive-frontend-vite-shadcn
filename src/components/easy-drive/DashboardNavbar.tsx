@@ -38,16 +38,6 @@ const DashboardNavbar = () => {
   const menuItems = (
     <>
       <NavLink
-        to="/home"
-        className={({ isActive }) =>
-          isActive
-            ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-            : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
-        }
-      >
-        Home
-      </NavLink>
-      <NavLink
         to="/cars"
         className={({ isActive }) =>
           isActive
@@ -102,6 +92,18 @@ const DashboardNavbar = () => {
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
+            <DropdownMenuItem onClick={handleLogout}>
+              <NavLink
+                to="/home"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
+                    : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
+                }
+              >
+                Home
+              </NavLink>
+            </DropdownMenuItem>
             <Link to={"/dashboard"}>
               <DropdownMenuItem>
                 <User className="mr-2 h-4 w-4" />
@@ -209,6 +211,16 @@ const DashboardNavbar = () => {
                   <div className="p-4 pb-0">
                     <div className="mt-3 h-[120px]">
                       <div className="flex flex-col">
+                        <NavLink
+                          to="/home"
+                          className={({ isActive }) =>
+                            isActive
+                              ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
+                              : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
+                          }
+                        >
+                          Home
+                        </NavLink>
                         <NavLink
                           to="/dashboard/user/my-booking"
                           className={({ isActive }) =>
