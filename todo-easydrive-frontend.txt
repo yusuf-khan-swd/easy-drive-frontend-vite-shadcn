@@ -1,2 +1,4 @@
 
+Deployed to vercel after initial project done with car add functionality - 11:25 PM 8/27/2024
+
 Done - Deploy frontend to vercel
