@@ -18,6 +18,14 @@ export const dashboardItems = (role: string) => {
         Home
       </NavLink>
       <NavLink
+        to="/dashboard"
+        className={({ isActive }) =>
+          isActive ? activeLinkStyle : unActiveLinkStyle
+        }
+      >
+        Dashboard
+      </NavLink>
+      <NavLink
         to="/dashboard/user/my-booking"
         className={({ isActive }) =>
           isActive ? activeLinkStyle : unActiveLinkStyle
@@ -38,6 +46,15 @@ export const dashboardItems = (role: string) => {
       >
         Home
       </NavLink>
+      <NavLink
+        to="/dashboard"
+        className={({ isActive }) =>
+          isActive ? activeLinkStyle : unActiveLinkStyle
+        }
+      >
+        Dashboard
+      </NavLink>
+
       <NavLink
         to="/dashboard/admin/manage-cars"
         className={({ isActive }) =>
