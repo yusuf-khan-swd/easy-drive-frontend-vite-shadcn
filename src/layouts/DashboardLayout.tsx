@@ -1,7 +1,7 @@
 import Footer from "@/components/easy-drive/Footer";
-import Navbar from "@/components/easy-drive/Navbar";
 import { NavLink, Outlet } from "react-router-dom";
 
+import DashboardNavbar from "@/components/easy-drive/DashboardNavbar";
 import { Button } from "@/components/ui/button";
 import {
   Drawer,
@@ -17,7 +17,7 @@ import {
 const DashboardLayout = () => {
   return (
     <div>
-      <Navbar />
+      <DashboardNavbar />
       <Drawer>
         <DrawerTrigger asChild>
           <Button variant="outline">Open Dashboard Menu</Button>
