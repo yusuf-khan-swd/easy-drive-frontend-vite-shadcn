@@ -1,5 +1,4 @@
 import { LogOut, User } from "lucide-react";
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Button } from "../ui/button";
 
@@ -28,57 +27,11 @@ import { useAppDispatch } from "@/redux/hooks";
 
 const DashboardNavbar = () => {
   const websiteName = "EasyDrive";
-  const [isOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
 
   const handleLogout = () => {
     dispatch(setLogout());
   };
-
-  const menuItems = (
-    <>
-      <NavLink
-        to="/cars"
-        className={({ isActive }) =>
-          isActive
-            ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-            : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
-        }
-      >
-        Cars
-      </NavLink>
-      <NavLink
-        to="/booking"
-        className={({ isActive }) =>
-          isActive
-            ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-            : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
-        }
-      >
-        Booking
-      </NavLink>
-      <NavLink
-        to="/about"
-        className={({ isActive }) =>
-          isActive
-            ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-            : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
-        }
-      >
-        About Us
-      </NavLink>
-      <NavLink
-        to="/contact"
-        className={({ isActive }) =>
-          isActive
-            ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-            : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
-        }
-      >
-        Contact Us
-      </NavLink>
-    </>
-  );
 
   const loginItems = (
     <>
@@ -139,56 +92,9 @@ const DashboardNavbar = () => {
               {websiteName}
             </NavLink>
           </div>
-          <div className="hidden md:flex md:space-x-4">{menuItems}</div>
-          <div className="hidden md:flex items-center md:space-x-1">
-            {loginItems}
-          </div>
-          <div className="-mr-2 flex md:hidden">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button onClick={() => setIsOpen(!isOpen)} variant="outline">
-                  {!isOpen ? (
-                    <svg
-                      className="block h-6 w-6"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M4 6h16M4 12h16M4 18h16"
-                      />
-                    </svg>
-                  ) : (
-                    <svg
-                      className="block h-6 w-6"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  )}
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56">
-                <DropdownMenuLabel>Menu Items</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <div className="flex flex-col">{menuItems}</div>
-                {loginItems}
-              </DropdownMenuContent>
-            </DropdownMenu>
+          <div className="-mr-2 flex space-x-1">
+            <div className="flex items-center">{loginItems}</div>
+
             <Drawer>
               <DrawerTrigger asChild>
                 <Button variant="outline">
