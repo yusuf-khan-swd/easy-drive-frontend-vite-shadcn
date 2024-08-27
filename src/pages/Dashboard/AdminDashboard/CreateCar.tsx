@@ -95,7 +95,6 @@ const CreateCar = () => {
             type="description"
             id="description"
             name="description"
-            disabled
             value={formData.description}
             onChange={handleChange}
             className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-700 focus:border-blue-700 sm:text-sm ${
