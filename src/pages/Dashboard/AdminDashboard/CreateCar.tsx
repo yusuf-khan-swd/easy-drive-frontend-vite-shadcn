@@ -22,12 +22,24 @@ const CreateCar = () => {
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value, type } = e.target;
+
+    // Type narrowing to check if the target is a checkbox
+    if (type === "checkbox" && e.target instanceof HTMLInputElement) {
+      const { checked } = e.target;
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: checked,
+      }));
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
 
   const handleFeaturesChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -51,7 +63,6 @@ const CreateCar = () => {
     if (!formData.pricePerHour)
       newErrors.pricePerHour = "Price per hour is required.";
     if (!formData.features.length) newErrors.features = "Features is required.";
-    if (!formData.isElectric) newErrors.isElectric = "IsElectric is required.";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -137,23 +148,18 @@ const CreateCar = () => {
         </div>
 
         {/* Is Electric */}
-        <div className="mb-4">
-          <label htmlFor="isElectric" className="block text-gray-700">
-            Electric Car
-          </label>
+        <div className="mb-4 flex space-x-1">
           <input
             type="checkbox"
             id="isElectric"
             name="isElectric"
             checked={formData.isElectric}
             onChange={handleChange}
-            className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-700 focus:border-blue-700 sm:text-sm ${
-              errors.isElectric ? "border-red-500" : "border-gray-300"
-            }`}
+            className="mt-1"
           />
-          {errors.isElectric && (
-            <p className="text-red-500 text-xs">{errors.isElectric}</p>
-          )}
+          <label htmlFor="isElectric" className="block text-gray-700">
+            Electric Car
+          </label>
         </div>
 
         {/* Features */}
