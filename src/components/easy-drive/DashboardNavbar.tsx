@@ -24,11 +24,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { dashboardItems } from "@/constants/dashboardItems";
 import { setLogout } from "@/redux/features/authSlice";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 const DashboardNavbar = () => {
   const websiteName = "EasyDrive";
   const dispatch = useAppDispatch();
+  const { role } = useAppSelector((state) => state.auth.user);
 
   const handleLogout = () => {
     dispatch(setLogout());
@@ -125,7 +126,7 @@ const DashboardNavbar = () => {
                   <div className="p-4 pb-0">
                     <div className="mt-3 h-[120px]">
                       <div className="flex flex-col">
-                        {dashboardItems("admin")}
+                        {dashboardItems(role)}
                       </div>
                     </div>
                   </div>
