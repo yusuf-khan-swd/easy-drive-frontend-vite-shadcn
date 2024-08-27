@@ -1,6 +1,6 @@
 import { LogOut, User } from "lucide-react";
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Button } from "../ui/button";
 
 import logo from "@/assets/logo.png";
@@ -104,12 +104,19 @@ const DashboardNavbar = () => {
                 Home
               </NavLink>
             </DropdownMenuItem>
-            <Link to={"/dashboard"}>
-              <DropdownMenuItem>
+            <DropdownMenuItem>
+              <NavLink
+                to="/home"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-blue-500 flex px-3 py-2 rounded-md text-sm font-medium"
+                    : "text-gray-800 flex hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
+                }
+              >
                 <User className="mr-2 h-4 w-4" />
                 <span>Dashboard</span>
-              </DropdownMenuItem>
-            </Link>
+              </NavLink>
+            </DropdownMenuItem>
           </DropdownMenuGroup>
 
           <DropdownMenuSeparator />
