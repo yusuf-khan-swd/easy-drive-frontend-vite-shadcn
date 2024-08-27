@@ -12,13 +12,6 @@ interface CreateCarFormData {
 }
 
 const CreateCar = () => {
-  const res =
-    import.meta.env.NODE_ENV === "development"
-      ? "http://localhost:5000/api"
-      : "https://easydrive-backend.vercel.app/api";
-
-  console.log(res);
-
   const [createCar, { isLoading }] = useCreateCarMutation();
 
   const [formData, setFormData] = useState<CreateCarFormData>({
