@@ -2,17 +2,17 @@ import { NavLink } from "react-router-dom";
 import { USER_ROLE } from "./role";
 
 export const dashboardItems = (role: string) => {
-  const activeLinkStyle = "";
-  const unActiveLinkStyle = "";
+  const activeLinkStyle =
+    "text-blue-500 px-3 py-2 rounded-md text-sm font-medium";
+  const unActiveLinkStyle =
+    "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium";
 
   const userDashboardItems = (
     <>
       <NavLink
         to="/home"
         className={({ isActive }) =>
-          isActive
-            ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-            : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
+          isActive ? activeLinkStyle : unActiveLinkStyle
         }
       >
         Home
@@ -20,9 +20,7 @@ export const dashboardItems = (role: string) => {
       <NavLink
         to="/dashboard/user/my-booking"
         className={({ isActive }) =>
-          isActive
-            ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-            : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
+          isActive ? activeLinkStyle : unActiveLinkStyle
         }
       >
         My-Booking
@@ -35,9 +33,7 @@ export const dashboardItems = (role: string) => {
       <NavLink
         to="/home"
         className={({ isActive }) =>
-          isActive
-            ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-            : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
+          isActive ? activeLinkStyle : unActiveLinkStyle
         }
       >
         Home
@@ -45,9 +41,7 @@ export const dashboardItems = (role: string) => {
       <NavLink
         to="/dashboard/admin/manage-cars"
         className={({ isActive }) =>
-          isActive
-            ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-            : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
+          isActive ? activeLinkStyle : unActiveLinkStyle
         }
       >
         Manage Cars
@@ -55,9 +49,7 @@ export const dashboardItems = (role: string) => {
       <NavLink
         to="/dashboard/admin/manage-bookings"
         className={({ isActive }) =>
-          isActive
-            ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-            : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
+          isActive ? activeLinkStyle : unActiveLinkStyle
         }
       >
         Manage Bookings
@@ -65,9 +57,7 @@ export const dashboardItems = (role: string) => {
       <NavLink
         to="/dashboard/admin/manage-return-cars"
         className={({ isActive }) =>
-          isActive
-            ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-            : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
+          isActive ? activeLinkStyle : unActiveLinkStyle
         }
       >
         Manage Return Cars
@@ -75,9 +65,7 @@ export const dashboardItems = (role: string) => {
       <NavLink
         to="/dashboard/admin/manage-users"
         className={({ isActive }) =>
-          isActive
-            ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-            : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
+          isActive ? activeLinkStyle : unActiveLinkStyle
         }
       >
         Manage Return Cars
