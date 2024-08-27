@@ -22,6 +22,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { dashboardItems } from "@/constants/dashboardItems";
 import { setLogout } from "@/redux/features/authSlice";
 import { useAppDispatch } from "@/redux/hooks";
 
@@ -124,66 +125,7 @@ const DashboardNavbar = () => {
                   <div className="p-4 pb-0">
                     <div className="mt-3 h-[120px]">
                       <div className="flex flex-col">
-                        <NavLink
-                          to="/home"
-                          className={({ isActive }) =>
-                            isActive
-                              ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-                              : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
-                          }
-                        >
-                          Home
-                        </NavLink>
-                        <NavLink
-                          to="/dashboard/user/my-booking"
-                          className={({ isActive }) =>
-                            isActive
-                              ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-                              : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
-                          }
-                        >
-                          My-Booking
-                        </NavLink>
-                        <NavLink
-                          to="/dashboard/admin/manage-cars"
-                          className={({ isActive }) =>
-                            isActive
-                              ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-                              : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
-                          }
-                        >
-                          Manage Cars
-                        </NavLink>
-                        <NavLink
-                          to="/dashboard/admin/manage-bookings"
-                          className={({ isActive }) =>
-                            isActive
-                              ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-                              : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
-                          }
-                        >
-                          Manage Bookings
-                        </NavLink>
-                        <NavLink
-                          to="/dashboard/admin/manage-return-cars"
-                          className={({ isActive }) =>
-                            isActive
-                              ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-                              : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
-                          }
-                        >
-                          Manage Return Cars
-                        </NavLink>
-                        <NavLink
-                          to="/dashboard/admin/manage-users"
-                          className={({ isActive }) =>
-                            isActive
-                              ? "text-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-                              : "text-gray-800 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
-                          }
-                        >
-                          Manage Return Cars
-                        </NavLink>
+                        {dashboardItems("admin")}
                       </div>
                     </div>
                   </div>
