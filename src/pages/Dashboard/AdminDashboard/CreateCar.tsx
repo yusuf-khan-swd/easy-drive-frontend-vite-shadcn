@@ -30,19 +30,28 @@ const CreateCar = () => {
     }));
   };
 
+  const handleFeaturesChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const selectedFeatures = Array.from(
+      e.target.selectedOptions,
+      (option) => option.value
+    );
+    setFormData((prevData) => ({
+      ...prevData,
+      features: selectedFeatures,
+    }));
+  };
+
   const validate = (): boolean => {
     const newErrors: { [key: string]: string } = {};
 
     if (!formData.name) newErrors.name = "Name is required.";
-    if (!formData.description) {
+    if (!formData.description)
       newErrors.description = "Description is required.";
-    }
-    if (!formData.color) {
-      newErrors.color = "Color is required.";
-    }
-    if (!formData.pricePerHour) {
-      newErrors.pricePerHour = "PricePerHour is required.";
-    }
+    if (!formData.color) newErrors.color = "Color is required.";
+    if (!formData.pricePerHour)
+      newErrors.pricePerHour = "Price per hour is required.";
+    if (!formData.features.length) newErrors.features = "Features is required.";
+    if (!formData.isElectric) newErrors.isElectric = "IsElectric is required.";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -53,8 +62,7 @@ const CreateCar = () => {
       e.preventDefault();
       if (validate()) {
         console.log("Form submitted:", formData);
-
-        console.log(formData);
+        // Further processing such as API calls can be added here
       }
     } catch (error: any) {
       console.log("Error: ", error);
@@ -63,13 +71,14 @@ const CreateCar = () => {
   };
 
   return (
-    <div className=" flex items-center justify-center">
+    <div className="flex items-center justify-center">
       <form
         className="bg-white border p-8 rounded shadow-md w-full max-w-md"
         onSubmit={handleSubmit}
       >
         <h2 className="text-2xl font-bold mb-6 text-center">Add a Car</h2>
 
+        {/* Name */}
         <div className="mb-4">
           <label htmlFor="name" className="block text-gray-700">
             Name
@@ -87,12 +96,13 @@ const CreateCar = () => {
           {errors.name && <p className="text-red-500 text-xs">{errors.name}</p>}
         </div>
 
+        {/* Description */}
         <div className="mb-4">
           <label htmlFor="description" className="block text-gray-700">
             Description
           </label>
           <input
-            type="description"
+            type="text"
             id="description"
             name="description"
             value={formData.description}
@@ -106,6 +116,7 @@ const CreateCar = () => {
           )}
         </div>
 
+        {/* Color */}
         <div className="mb-4">
           <label htmlFor="color" className="block text-gray-700">
             Color
@@ -125,12 +136,59 @@ const CreateCar = () => {
           )}
         </div>
 
+        {/* Is Electric */}
+        <div className="mb-4">
+          <label htmlFor="isElectric" className="block text-gray-700">
+            Electric Car
+          </label>
+          <input
+            type="checkbox"
+            id="isElectric"
+            name="isElectric"
+            checked={formData.isElectric}
+            onChange={handleChange}
+            className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-700 focus:border-blue-700 sm:text-sm ${
+              errors.isElectric ? "border-red-500" : "border-gray-300"
+            }`}
+          />
+          {errors.isElectric && (
+            <p className="text-red-500 text-xs">{errors.isElectric}</p>
+          )}
+        </div>
+
+        {/* Features */}
+        <div className="mb-4">
+          <label htmlFor="features" className="block text-gray-700">
+            Features
+          </label>
+          <select
+            id="features"
+            name="features"
+            multiple
+            value={formData.features}
+            onChange={handleFeaturesChange}
+            className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-700 focus:border-blue-700 sm:text-sm ${
+              errors.features ? "border-red-500" : "border-gray-300"
+            }`}
+          >
+            <option value="Air Conditioning">Air Conditioning</option>
+            <option value="GPS">GPS</option>
+            <option value="Bluetooth">Bluetooth</option>
+            <option value="Heated Seats">Heated Seats</option>
+          </select>
+
+          {errors.features && (
+            <p className="text-red-500 text-xs">{errors.features}</p>
+          )}
+        </div>
+
+        {/* Price Per Hour */}
         <div className="mb-4">
           <label htmlFor="pricePerHour" className="block text-gray-700">
             Price Per Hour
           </label>
           <input
-            type="text"
+            type="number"
             id="pricePerHour"
             name="pricePerHour"
             value={formData.pricePerHour}
