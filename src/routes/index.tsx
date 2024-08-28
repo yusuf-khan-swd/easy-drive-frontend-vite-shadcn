@@ -2,6 +2,7 @@ import DashboardLayout from "@/layouts/DashboardLayout";
 import MainLayout from "@/layouts/MainLayout";
 import AboutUs from "@/pages/AboutUs";
 import Booking from "@/pages/Booking";
+import BookingDetails from "@/pages/BookingDetails";
 import CarDetails from "@/pages/CarDetails";
 import Cars from "@/pages/Cars";
 import ContactUsPage from "@/pages/Contact";
@@ -45,6 +46,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Booking />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/booking/:id",
+        element: (
+          <PrivateRoute>
+            <BookingDetails />
           </PrivateRoute>
         ),
       },
