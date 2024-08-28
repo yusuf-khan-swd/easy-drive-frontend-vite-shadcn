@@ -1,7 +1,13 @@
 import { TCar } from "@/types/car";
 import { Link } from "react-router-dom";
 
-const CarCard = ({ car }: { car: TCar }) => {
+const CarCard = ({
+  car,
+  detailsPage = false,
+}: {
+  car: TCar;
+  detailsPage?: boolean;
+}) => {
   const {
     _id,
     name,
@@ -9,7 +15,7 @@ const CarCard = ({ car }: { car: TCar }) => {
     color,
     status,
     isElectric,
-    // features,
+    features,
     pricePerHour,
   } = car;
 
@@ -30,7 +36,7 @@ const CarCard = ({ car }: { car: TCar }) => {
         <p className="text-gray-900 font-bold mb-2">
           Price: ${pricePerHour}/day
         </p>
-        <p className={`mb-4 `}>
+        <p className="mb-2">
           Status:{" "}
           <span
             className={`${
@@ -40,6 +46,11 @@ const CarCard = ({ car }: { car: TCar }) => {
             {status}
           </span>
         </p>
+        <div className="mb-4">
+          {detailsPage &&
+            features &&
+            features.map((feature: string) => <p>{feature}</p>)}
+        </div>
         <Link to={`/car/${_id}`}>
           <button className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition-colors duration-300">
             View Details

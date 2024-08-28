@@ -17,7 +17,7 @@ const CarDetails = () => {
       <h2 className="text-2xl font-bold text-center mb-6">Car Details</h2>
       {car ? (
         <div className="grid grid-cols-1 gap-8">
-          <CarCard car={car} />
+          <CarCard car={car} detailsPage />
         </div>
       ) : (
         <h3 className="text-2xl font-bold text-center">No data available</h3>
