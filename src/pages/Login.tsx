@@ -1,7 +1,6 @@
 import { useLoginMutation } from "@/redux/api/authApi";
 import { setToken, setUser } from "@/redux/features/authSlice";
 import { useAppDispatch } from "@/redux/hooks";
-import { jwtDecode } from "jwt-decode";
 import { ChangeEvent, FormEvent, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,6 +9,8 @@ interface LoginFormData {
   email: string;
   password: string;
 }
+
+// TODO: jwtDecode did not use in this application
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -50,10 +51,6 @@ const Login = () => {
     try {
       e.preventDefault();
       if (validate()) {
-        console.log("Logging in with:", formData);
-        // Perform login operation
-        // Redirect to dashboard if successful
-
         const result = await login(formData).unwrap();
 
         const token = result?.data?.token;
@@ -64,9 +61,6 @@ const Login = () => {
 
         toast.success("Login Success!!");
         navigate("/dashboard");
-
-        const decodedToken = jwtDecode(token);
-        console.log({ decodedToken });
       }
     } catch (error: any) {
       console.log("Error: ", error);
