@@ -59,6 +59,15 @@ const columns: ColumnDef<Payment>[] = [
     accessorKey: "amount",
     header: "Amount",
   },
+  {
+    id: "actions",
+    cell: ({ row }) => {
+      const handleDelete = (id: string) => {
+        console.log({ id });
+      };
+      return <Button onClick={() => handleDelete(row.id)}>Delete</Button>;
+    },
+  },
 ];
 
 const ManageCars = () => {
