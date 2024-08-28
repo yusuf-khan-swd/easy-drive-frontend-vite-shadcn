@@ -46,6 +46,8 @@ const BookingDetails = () => {
 
         const result = await createBooking(bookingData).unwrap();
         toast.success(result?.message || "Car Booked Successfully");
+
+        //TODO: Redirect to my-booking page
       }
     } catch (error: any) {
       console.log("Error: ", error);
