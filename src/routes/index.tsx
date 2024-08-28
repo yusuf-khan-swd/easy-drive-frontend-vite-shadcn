@@ -11,6 +11,7 @@ import ManageBookings from "@/pages/Dashboard/AdminDashboard/ManageBookings";
 import ManageCars from "@/pages/Dashboard/AdminDashboard/ManageCars";
 import ManageReturnCars from "@/pages/Dashboard/AdminDashboard/ManageReturnCars";
 import ManageUsers from "@/pages/Dashboard/AdminDashboard/ManageUsers";
+import UpdateCar from "@/pages/Dashboard/AdminDashboard/UpdateCar";
 import Dashboard from "@/pages/Dashboard/Dashboard";
 import MyBooking from "@/pages/Dashboard/UserDashboard/MyBooking";
 import MyPayment from "@/pages/Dashboard/UserDashboard/MyPayment";
@@ -147,6 +148,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <CreateCar />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/admin/manage-cars/:id",
+        element: (
+          <AdminRoute>
+            <UpdateCar />
           </AdminRoute>
         ),
       },

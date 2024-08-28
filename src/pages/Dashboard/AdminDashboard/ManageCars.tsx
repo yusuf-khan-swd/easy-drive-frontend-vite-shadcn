@@ -40,8 +40,17 @@ const ManageCars = () => {
     {
       id: "actions",
       cell: ({ row }) => {
+        const id = row.original._id;
+
         return (
-          <Button onClick={() => handleDelete(row.original._id)}>Delete</Button>
+          <div className="space-x-2">
+            <Link to={`/dashboard/admin/manage-cars/:${id}`}>
+              <Button>Edit</Button>
+            </Link>
+            <Button variant="destructive" onClick={() => handleDelete(id)}>
+              Delete
+            </Button>
+          </div>
         );
       },
     },
