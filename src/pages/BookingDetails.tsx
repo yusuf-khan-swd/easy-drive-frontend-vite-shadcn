@@ -3,13 +3,14 @@ import { useCreateBookingMutation } from "@/redux/api/bookingApi";
 import { useGetSingleCarQuery } from "@/redux/api/carApi";
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const BookingDetails = () => {
   const [createBooking] = useCreateBookingMutation();
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const navigate = useNavigate();
 
   const { id } = useParams();
   const { data, isLoading } = useGetSingleCarQuery(id || "");
@@ -47,7 +48,7 @@ const BookingDetails = () => {
         const result = await createBooking(bookingData).unwrap();
         toast.success(result?.message || "Car Booked Successfully");
 
-        //TODO: Redirect to my-booking page
+        navigate("/dashboard/user/my-booking");
       }
     } catch (error: any) {
       console.log("Error: ", error);
