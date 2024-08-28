@@ -25,6 +25,7 @@ const carApi = baseApi.injectEndpoints({
         url: `${CAR_URL}/${id}`,
         method: "GET",
       }),
+      providesTags: ["car"],
     }),
 
     updateCar: builder.mutation({
@@ -33,6 +34,7 @@ const carApi = baseApi.injectEndpoints({
         method: "PUT",
         body: carData,
       }),
+      invalidatesTags: ["car"],
     }),
 
     deleteCar: builder.mutation({
