@@ -1,10 +1,12 @@
 import LoadingSpinner from "@/components/easy-drive/LoadingSpinner";
+import { useCreateBookingMutation } from "@/redux/api/bookingApi";
 import { useGetSingleCarQuery } from "@/redux/api/carApi";
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 
 const BookingDetails = () => {
+  const [createBooking] = useCreateBookingMutation();
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -40,12 +42,10 @@ const BookingDetails = () => {
     try {
       e.preventDefault();
       if (validate()) {
-        const bookingData = { cardId: _id, date, startTime: time };
+        const bookingData = { carId: _id, date, startTime: time };
 
-        console.log(bookingData);
-
-        // const result = await createCar(carData).unwrap();
-        // toast.success(result?.message || "Car Created Successfully");
+        const result = await createBooking(bookingData).unwrap();
+        toast.success(result?.message || "Car Booked Successfully");
       }
     } catch (error: any) {
       console.log("Error: ", error);
