@@ -51,8 +51,11 @@ const CarCard = ({
             <div className="flex space-x-2">
               <p>Features:</p>{" "}
               <div className="flex flex-wrap space-x-2">
-                {features.map((feature: string) => (
-                  <p className="bg-slate-300 px-2 py-1 rounded-lg text-sm m-1">
+                {features.map((feature: string, index: number) => (
+                  <p
+                    key={index}
+                    className="bg-slate-300 px-2 py-1 rounded-lg text-sm m-1"
+                  >
                     {feature}
                   </p>
                 ))}
