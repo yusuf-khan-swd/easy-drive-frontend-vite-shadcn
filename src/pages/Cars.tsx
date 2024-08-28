@@ -7,8 +7,6 @@ const Cars = () => {
   const { data, isLoading } = useGetAllCarsQuery(undefined);
   const cars = data?.data;
 
-  console.log(cars);
-
   if (isLoading) return <LoadingSpinner />;
 
   return (
