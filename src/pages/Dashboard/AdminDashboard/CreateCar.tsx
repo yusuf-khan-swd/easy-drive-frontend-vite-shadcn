@@ -188,6 +188,10 @@ const CreateCar = () => {
             <option value="GPS">GPS</option>
             <option value="Bluetooth">Bluetooth</option>
             <option value="Heated Seats">Heated Seats</option>
+            <option value="Sunroof">Sunroof</option>
+            <option value="Rear Camera">Rear Camera</option>
+            <option value="Cruise Control">Cruise Control</option>
+            <option value="Leather Seats">Leather Seats</option>
           </select>
 
           {errors.features && (
