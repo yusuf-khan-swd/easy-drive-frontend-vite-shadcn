@@ -37,6 +37,13 @@ import {
 import { useGetAllCarsQuery } from "@/redux/api/carApi";
 import { Link } from "react-router-dom";
 
+export type Payment = {
+  id: string;
+  amount: number;
+  status: "pending" | "processing" | "success" | "failed";
+  email: string;
+};
+
 const data: Payment[] = [
   {
     id: "m5gr84i9",
@@ -69,13 +76,6 @@ const data: Payment[] = [
     email: "carmella@hotmail.com",
   },
 ];
-
-export type Payment = {
-  id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
-};
 
 const columns: ColumnDef<Payment>[] = [
   {
