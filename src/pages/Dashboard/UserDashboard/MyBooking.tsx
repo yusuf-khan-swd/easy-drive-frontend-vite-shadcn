@@ -1,12 +1,28 @@
 import { DataTable } from "@/components/easy-drive/DataTable";
 import LoadingSpinner from "@/components/easy-drive/LoadingSpinner";
 import { Button } from "@/components/ui/button";
-import { useMyBookingQuery } from "@/redux/api/bookingApi";
+import {
+  useDeleteMyBookingMutation,
+  useMyBookingQuery,
+} from "@/redux/api/bookingApi";
 import { ColumnDef } from "@tanstack/react-table";
+import toast from "react-hot-toast";
 
 const MyBooking = () => {
   const { data, isLoading } = useMyBookingQuery(undefined);
   const bookings = data?.data;
+  console.log(data);
+  const [deleteMyBooking] = useDeleteMyBookingMutation();
+
+  const handleDelete = async (id: string) => {
+    try {
+      const result = await deleteMyBooking(id).unwrap();
+      toast.success(result?.message || "Booking deleted Successfully");
+    } catch (error: any) {
+      console.log("Error: ", error);
+      toast.error(error?.data?.message || "Booking delete failed");
+    }
+  };
 
   if (isLoading) return <LoadingSpinner />;
 
@@ -32,10 +48,7 @@ const MyBooking = () => {
         return (
           <div className="space-x-2">
             <Button>Edit</Button>
-            <Button
-              variant="destructive"
-              // onClick={() => handleDelete(id)}
-            >
+            <Button variant="destructive" onClick={() => handleDelete(id)}>
               Delete
             </Button>
           </div>
