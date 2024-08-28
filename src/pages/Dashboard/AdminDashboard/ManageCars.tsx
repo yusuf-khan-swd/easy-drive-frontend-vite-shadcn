@@ -44,7 +44,7 @@ const ManageCars = () => {
 
         return (
           <div className="space-x-2">
-            <Link to={`/dashboard/admin/manage-cars/:${id}`}>
+            <Link to={`/dashboard/admin/manage-cars/${id}`}>
               <Button>Edit</Button>
             </Link>
             <Button variant="destructive" onClick={() => handleDelete(id)}>
