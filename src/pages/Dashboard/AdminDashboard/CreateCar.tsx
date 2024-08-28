@@ -81,10 +81,26 @@ const CreateCar = () => {
 
         const result = await createCar(carData).unwrap();
         toast.success(result?.message || "Car Created Successfully");
+        setFormData({
+          name: "",
+          description: "",
+          color: "",
+          isElectric: false,
+          features: [],
+          pricePerHour: 0,
+        });
       }
     } catch (error: any) {
       console.log("Error: ", error);
       toast.error(error?.data?.message || "Car create failed");
+      setFormData({
+        name: "",
+        description: "",
+        color: "",
+        isElectric: false,
+        features: [],
+        pricePerHour: 0,
+      });
     }
   };
 
