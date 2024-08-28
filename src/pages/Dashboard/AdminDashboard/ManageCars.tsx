@@ -13,6 +13,7 @@ import {
 import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react";
 import * as React from "react";
 
+import LoadingSpinner from "@/components/easy-drive/LoadingSpinner";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -33,6 +34,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useGetAllCarsQuery } from "@/redux/api/carApi";
 import { Link } from "react-router-dom";
 
 const data: Payment[] = [
@@ -167,6 +169,10 @@ const columns: ColumnDef<Payment>[] = [
 ];
 
 const ManageCars = () => {
+  const { data: carsData, isLoading } = useGetAllCarsQuery(undefined);
+  const cars = carsData?.data;
+  console.log(cars);
+
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -193,6 +199,8 @@ const ManageCars = () => {
       rowSelection,
     },
   });
+
+  if (isLoading) return <LoadingSpinner />;
 
   return (
     <div>
