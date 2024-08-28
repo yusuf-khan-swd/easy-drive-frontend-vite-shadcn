@@ -1,8 +1,12 @@
 import LoadingSpinner from "@/components/easy-drive/LoadingSpinner";
 import { useGetSingleCarQuery } from "@/redux/api/carApi";
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 const BookingDetails = () => {
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+
   const { id } = useParams();
   const { data, isLoading } = useGetSingleCarQuery(id || "");
   const car = data?.data;
@@ -19,6 +23,8 @@ const BookingDetails = () => {
     features,
     pricePerHour,
   } = car;
+
+  console.log({ date, time });
 
   return (
     <div>
@@ -76,6 +82,21 @@ const BookingDetails = () => {
       ) : (
         <h3 className="text-2xl font-bold text-center">No data available</h3>
       )}
+
+      <div className="flex flex-col items-center justify-center space-y-4 p-6">
+        <input
+          className="p-2 border border-gray-300 rounded-md"
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
+        <input
+          className="p-2 border border-gray-300 rounded-md"
+          type="time"
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
+        />
+      </div>
     </div>
   );
 };
