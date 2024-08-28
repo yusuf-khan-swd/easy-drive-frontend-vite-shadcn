@@ -47,9 +47,18 @@ const CarCard = ({
           </span>
         </p>
         <div className="mb-4">
-          {detailsPage &&
-            features &&
-            features.map((feature: string) => <p>{feature}</p>)}
+          {detailsPage && features && (
+            <div className="flex space-x-2">
+              <p>Features:</p>{" "}
+              <div className="flex flex-wrap space-x-2">
+                {features.map((feature: string) => (
+                  <p className="bg-slate-300 px-2 py-1 rounded-lg text-sm m-1">
+                    {feature}
+                  </p>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
         <Link to={`/car/${_id}`}>
           <button className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition-colors duration-300">
