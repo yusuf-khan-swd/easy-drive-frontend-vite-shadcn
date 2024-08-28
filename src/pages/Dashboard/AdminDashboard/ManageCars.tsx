@@ -6,76 +6,39 @@ import { Button } from "@/components/ui/button";
 import { useGetAllCarsQuery } from "@/redux/api/carApi";
 import { Link } from "react-router-dom";
 
-export type Payment = {
-  id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
-};
-
-const data: Payment[] = [
-  {
-    id: "m5gr84i9",
-    amount: 316,
-    status: "success",
-    email: "ken99@yahoo.com",
-  },
-  {
-    id: "3u1reuv4",
-    amount: 242,
-    status: "success",
-    email: "Abe45@gmail.com",
-  },
-  {
-    id: "derv1ws0",
-    amount: 837,
-    status: "processing",
-    email: "Monserrat44@gmail.com",
-  },
-  {
-    id: "5kma53ae",
-    amount: 874,
-    status: "success",
-    email: "Silas22@gmail.com",
-  },
-  {
-    id: "bhqecj4p",
-    amount: 721,
-    status: "failed",
-    email: "carmella@hotmail.com",
-  },
-];
-
-const columns: ColumnDef<Payment>[] = [
-  {
-    accessorKey: "status",
-    header: "Status",
-  },
-  {
-    accessorKey: "email",
-    header: "Email",
-  },
-  {
-    accessorKey: "amount",
-    header: "Amount",
-  },
-  {
-    id: "actions",
-    cell: ({ row }) => {
-      const handleDelete = (id: string) => {
-        console.log({ id });
-      };
-      return <Button onClick={() => handleDelete(row.id)}>Delete</Button>;
-    },
-  },
-];
-
 const ManageCars = () => {
   const { data: carsData, isLoading } = useGetAllCarsQuery(undefined);
   const cars = carsData?.data;
-  console.log(cars);
+  // const [deleteCar] = useDeleteCarMutation();
+
+  const handleDelete = (id: string) => {
+    console.log({ id });
+  };
 
   if (isLoading) return <LoadingSpinner />;
+
+  const columns: ColumnDef<any>[] = [
+    {
+      accessorKey: "name",
+      header: "Name",
+    },
+    {
+      accessorKey: "description",
+      header: "Description",
+    },
+    {
+      accessorKey: "pricePerHour",
+      header: "PricePerHour",
+    },
+    {
+      id: "actions",
+      cell: ({ row }) => {
+        return (
+          <Button onClick={() => handleDelete(row.original._id)}>Delete</Button>
+        );
+      },
+    },
+  ];
 
   return (
     <div>
@@ -88,7 +51,7 @@ const ManageCars = () => {
         </div>
       </div>
       <div className="w-full py-4">
-        <DataTable columns={columns} data={data} />
+        <DataTable columns={columns} data={cars} />
       </div>
     </div>
   );
