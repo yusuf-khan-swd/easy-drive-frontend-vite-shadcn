@@ -92,26 +92,10 @@ const UpdateCar = () => {
 
         const result = await updateCar(carData).unwrap();
         toast.success(result?.message || "Car Update Successfully");
-        setFormData({
-          name: "",
-          description: "",
-          color: "",
-          isElectric: false,
-          features: [],
-          pricePerHour: 0,
-        });
       }
     } catch (error: any) {
       console.log("Error: ", error);
       toast.error(error?.data?.message || "Car Update failed");
-      setFormData({
-        name: "",
-        description: "",
-        color: "",
-        isElectric: false,
-        features: [],
-        pricePerHour: 0,
-      });
     }
   };
 
