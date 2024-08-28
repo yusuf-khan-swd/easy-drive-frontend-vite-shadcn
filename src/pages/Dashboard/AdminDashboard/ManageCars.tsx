@@ -3,16 +3,23 @@ import { ColumnDef } from "@tanstack/react-table";
 import { DataTable } from "@/components/easy-drive/DataTable";
 import LoadingSpinner from "@/components/easy-drive/LoadingSpinner";
 import { Button } from "@/components/ui/button";
-import { useGetAllCarsQuery } from "@/redux/api/carApi";
+import { useDeleteCarMutation, useGetAllCarsQuery } from "@/redux/api/carApi";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 const ManageCars = () => {
   const { data: carsData, isLoading } = useGetAllCarsQuery(undefined);
   const cars = carsData?.data;
-  // const [deleteCar] = useDeleteCarMutation();
+  const [deleteCar] = useDeleteCarMutation();
 
-  const handleDelete = (id: string) => {
-    console.log({ id });
+  const handleDelete = async (id: string) => {
+    try {
+      const result = await deleteCar(id).unwrap();
+      toast.success(result?.message || "Car deleted Successfully");
+    } catch (error: any) {
+      console.log("Error: ", error);
+      toast.error(error?.data?.message || "Car delete failed");
+    }
   };
 
   if (isLoading) return <LoadingSpinner />;
