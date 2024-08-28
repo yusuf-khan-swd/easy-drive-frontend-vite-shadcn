@@ -134,7 +134,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/dashboard/admin/create-cars",
+        path: "/dashboard/admin/manage-cars/create-cars",
         element: (
           <AdminRoute>
             <CreateCar />

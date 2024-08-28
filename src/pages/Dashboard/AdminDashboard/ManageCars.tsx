@@ -207,7 +207,7 @@ const ManageCars = () => {
       <div className="flex justify-between">
         <h2 className="text-2xl font-bold">Manage Cars</h2>
         <div>
-          <Link to="/dashboard/admin/create-cars">
+          <Link to="/dashboard/admin/manage-cars/create-cars">
             <Button>Create</Button>
           </Link>
         </div>
