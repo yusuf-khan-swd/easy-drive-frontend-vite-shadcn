@@ -17,7 +17,6 @@ const UpdateCar = () => {
   const { id } = useParams();
   const { data, isLoading } = useGetSingleCarQuery(id || "");
   const car = data?.data;
-  console.log(car);
 
   const [updateCar] = useUpdateCarMutation();
 
