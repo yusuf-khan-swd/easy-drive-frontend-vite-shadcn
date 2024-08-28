@@ -1,5 +1,5 @@
 import LoadingSpinner from "@/components/easy-drive/LoadingSpinner";
-import { useCreateCarMutation, useGetSingleCarQuery } from "@/redux/api/carApi";
+import { useGetSingleCarQuery, useUpdateCarMutation } from "@/redux/api/carApi";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
@@ -19,7 +19,7 @@ const UpdateCar = () => {
   const car = data?.data;
   console.log(car);
 
-  const [createCar] = useCreateCarMutation();
+  const [updateCar] = useUpdateCarMutation();
 
   const [formData, setFormData] = useState<UpdateCarFormData>({
     name: car?.name || "",
@@ -84,10 +84,14 @@ const UpdateCar = () => {
       if (validate()) {
         console.log("Form submitted:", formData);
         const { pricePerHour } = formData;
-        const carData = { ...formData, pricePerHour: Number(pricePerHour) };
+        const carData = {
+          ...formData,
+          pricePerHour: Number(pricePerHour),
+          _id: car?._id,
+        };
 
-        const result = await createCar(carData).unwrap();
-        toast.success(result?.message || "Car Created Successfully");
+        const result = await updateCar(carData).unwrap();
+        toast.success(result?.message || "Car Update Successfully");
         setFormData({
           name: "",
           description: "",
@@ -99,7 +103,7 @@ const UpdateCar = () => {
       }
     } catch (error: any) {
       console.log("Error: ", error);
-      toast.error(error?.data?.message || "Car create failed");
+      toast.error(error?.data?.message || "Car Update failed");
       setFormData({
         name: "",
         description: "",
