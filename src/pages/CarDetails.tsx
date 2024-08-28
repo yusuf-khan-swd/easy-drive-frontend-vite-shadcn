@@ -8,8 +8,6 @@ const CarDetails = () => {
   const { data, isLoading } = useGetSingleCarQuery(id || "");
   const car = data?.data;
 
-  console.log(car);
-
   if (isLoading) return <LoadingSpinner />;
 
   return (
