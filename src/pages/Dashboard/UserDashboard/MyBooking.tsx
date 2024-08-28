@@ -28,6 +28,10 @@ const MyBooking = () => {
 
   const columns: ColumnDef<any>[] = [
     {
+      accessorKey: "car.name",
+      header: "Car",
+    },
+    {
       accessorKey: "date",
       header: "Date",
     },
@@ -47,7 +51,6 @@ const MyBooking = () => {
 
         return (
           <div className="space-x-2">
-            <Button>Edit</Button>
             <Button variant="destructive" onClick={() => handleDelete(id)}>
               Delete
             </Button>
@@ -63,7 +66,11 @@ const MyBooking = () => {
         <h2 className="text-2xl font-bold">Manage Booking</h2>
       </div>
       <div className="w-full py-4">
-        <DataTable columns={columns} data={bookings} />
+        {!bookings || bookings?.length < 1 ? (
+          <h2>No Data Available</h2>
+        ) : (
+          <DataTable columns={columns} data={bookings} />
+        )}
       </div>
     </div>
   );
