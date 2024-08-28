@@ -60,11 +60,19 @@ const CarCard = ({
             </div>
           )}
         </div>
-        <Link to={`/car/${_id}`}>
-          <button className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition-colors duration-300">
-            View Details
-          </button>
-        </Link>
+        {detailsPage ? (
+          <Link to={`/booking/${_id}`}>
+            <button className="bg-blue-700 text-white px-6 py-3 rounded-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-700">
+              Book Now
+            </button>
+          </Link>
+        ) : (
+          <Link to={`/car/${_id}`}>
+            <button className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition-colors duration-300">
+              View Details
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );
