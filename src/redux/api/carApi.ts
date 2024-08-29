@@ -19,6 +19,9 @@ const carApi = baseApi.injectEndpoints({
       query: () => ({
         url: `${CAR_URL}`,
         method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("easy-drive-token")}`,
+        },
       }),
       providesTags: ["car"],
     }),
@@ -27,6 +30,9 @@ const carApi = baseApi.injectEndpoints({
       query: (id: string) => ({
         url: `${CAR_URL}/${id}`,
         method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("easy-drive-token")}`,
+        },
       }),
       providesTags: ["car"],
     }),
