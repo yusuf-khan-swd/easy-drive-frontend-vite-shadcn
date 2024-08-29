@@ -13,7 +13,6 @@ import { Link } from "react-router-dom";
 const ManageUsers = () => {
   const { data: usersData, isLoading } = useGetAllUsersQuery(undefined);
   const users = usersData?.data;
-  console.log(users);
   const [deleteUser] = useDeleteUserMutation();
 
   const handleDelete = async (id: string) => {
