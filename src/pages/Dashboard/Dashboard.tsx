@@ -1,8 +1,11 @@
-import { useAppSelector } from "@/redux/hooks";
+import { useUpdateUserMutation } from "@/redux/api/userApi";
+import { setUser } from "@/redux/features/authSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { ChangeEvent, FormEvent, useState } from "react";
 import toast from "react-hot-toast";
 
 interface SignUpFormData {
+  _id: string;
   name: string;
   email: string;
   phone?: string;
@@ -11,8 +14,11 @@ interface SignUpFormData {
 
 const Dashboard = () => {
   const { user } = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
+  const [updateUser] = useUpdateUserMutation();
 
   const [formData, setFormData] = useState<SignUpFormData>({
+    _id: user?._id || "",
     name: user?.name || "",
     email: user?.email || "",
     phone: user?.phone || "",
@@ -47,13 +53,13 @@ const Dashboard = () => {
     try {
       e.preventDefault();
       if (validate()) {
-        console.log("Form submitted:", formData);
-
-        console.log(formData);
+        const result = await updateUser(formData).unwrap();
+        dispatch(setUser(result?.data));
+        toast.success(result?.message || "User Update Success");
       }
     } catch (error: any) {
       console.log("Error: ", error);
-      toast.error(error?.data?.message || "Registration failed");
+      toast.error(error?.data?.message || "Update info failed");
     }
   };
 
