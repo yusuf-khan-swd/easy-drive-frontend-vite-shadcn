@@ -11,7 +11,6 @@ import toast from "react-hot-toast";
 const ManageBooking = () => {
   const { data, isLoading } = useGetAllBookingsQuery(undefined);
   const bookings = data?.data;
-  console.log(bookings);
   const [deleteBooking] = useDeleteBookingMutation();
 
   const handleDelete = async (id: string) => {
