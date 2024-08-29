@@ -1,54 +1,66 @@
-<div align="center">
-  <h1>Comprehensive Project README Template</h1>
-</div>
-
----
-
-# Project Name
+# EasyDrive
 
 ## Introduction
 
-Brief introduction or tagline about the project.
+Welcome to **Easy Drive**, a comprehensive car rental service application backend. This README provides all the necessary information to set up, run, and use the application effectively.
 
 ## Project Description
 
-Detailed description of the project, including its purpose and goals.
+**Easy Drive** is designed to facilitate seamless car rental services. It provides a user-friendly interface for customers to book cars, and an admin interface to manage the car inventory and bookings.
+
+## `Useful Links`
+
+**1. [Github Client Side Repository](https://github.com/yusuf-khan-swd/easy-drive-frontend)** \
+**2. [Live Website](https://easydrivego.vercel.app)**
 
 ## Features
 
-- List of key features or functionalities.
-- Bullet points are helpful for clarity.
+- **User Authentication**: Secure sign-up and login functionality.
+- **Dashboard**: Dashboard for both user and admin.
+- **View Car Details**: Click on any car listing to view more details including features, pricing, and availability.
+- **Book a Car**: Select the desired car and fill out the booking form.
+- **Manage Your Booking**: Access your account to view or modify your bookings.
+- **Car Management**: Admins protected route. Where admin can add, update, return, and delete cars from the inventory.
+- **User Management**: Admins protected route. Where admin can view all users and add new admin or new user.
+- **Booking Management**: Users can book cars, view their bookings, and admins can view all bookings.
+- **Real-Time Availability**: Get instant updates on the availability of vehicles.
+- **Wide Selection of Cars**: Choose from economy, luxury, and SUV categories.
+- **24/7 Customer Support**: Access customer support any time of day or night.
+- **Detailed Car Information**: View car details, features, insurance options, and cancellation policies.
 
 ## Technology Stack
 
-- List of technologies, frameworks, and tools used in the project.
-- Example: React, Redux, Node.js, MongoDB, etc.
+- **Frontend**: React, TypeScript, Tailwind CSS, Shadcn-ui
+- **Backend**: Node.js, Express.js, TypeScript
+- **Database**: MongoDB, Mongoose
+- **State Management**: Redux
+- **Others**: Vite, React-Router-Dom, Toast Notifications
 
 ## Installation Guideline
 
-Instructions on how to install, configure, and get the project running locally.
-
 ### Prerequisites
 
-- List any software or dependencies that need to be installed beforehand (if any).
+- Node.js (v14 or higher)
+- npm (v6 or higher) or yarn (v1.22 or higher)
+- MongoDB instance (local or cloud)
 
 ### Installation Steps
 
-1. Step-by-step instructions on how to install the project.
-2. Provide code examples or commands for clarity.
+1. **First step** => Clone the project
 
-### Configuration
-
-1. Create a `.env` file in the root directory of the project.
-2. Add necessary configuration variables in the `.env` file.
-   Example:
-   ```bash
-    PORT=3000
-    DB_URL=your_db_connection_uri
-    API_KEY=your_api_key_here
+   ```sh
+   git clone https://github.com/yusuf-khan-swd/easy-drive-frontend.git
+   cd easy-drive-frontend
    ```
-3. Explain any specific configuration requirements or variables used in your project.
 
-## Usage
+2. **Second step** => Install all the packages using
 
-Instructions or examples for using the project. Include screenshots or code snippets if applicable.
+   ```sh
+   npm install
+   ```
+
+3. **Final step** => Run your code by using
+
+   ```sh
+   npm run dev
+   ```
