@@ -1,7 +1,7 @@
 import { useSignupMutation } from "@/redux/api/authApi";
 import { ChangeEvent, FormEvent, useState } from "react";
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface SignUpFormData {
   name: string;
@@ -82,7 +82,7 @@ const CreateUser = () => {
         className="bg-white border p-8 rounded shadow-md w-full max-w-md"
         onSubmit={handleSubmit}
       >
-        <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">Create User</h2>
 
         <div className="mb-4">
           <label htmlFor="name" className="block text-gray-700">
@@ -176,15 +176,8 @@ const CreateUser = () => {
           type="submit"
           className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
         >
-          Sign Up
+          Add User
         </button>
-
-        <p className="mt-4 text-center">
-          Already have an account?{" "}
-          <Link to="/login" className="text-blue-500 underline">
-            Sign In Instead
-          </Link>
-        </p>
       </form>
     </div>
   );
