@@ -8,7 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 const BookingDetails = () => {
   const [createBooking] = useCreateBookingMutation();
   const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
+  const [startTime, setStartTime] = useState("");
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const navigate = useNavigate();
 
@@ -33,7 +33,7 @@ const BookingDetails = () => {
     const newErrors: { [key: string]: string } = {};
 
     if (!date) newErrors.date = "Date is required.";
-    if (!time) newErrors.time = "Time is required.";
+    if (!startTime) newErrors.time = "Time is required.";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -43,7 +43,7 @@ const BookingDetails = () => {
     try {
       e.preventDefault();
       if (validate()) {
-        const bookingData = { carId: _id, date, startTime: time };
+        const bookingData = { carId: _id, date, startTime: startTime };
 
         const result = await createBooking(bookingData).unwrap();
         toast.success(result?.message || "Car Booked Successfully");
@@ -92,8 +92,8 @@ const BookingDetails = () => {
               </label>
               <input
                 type="time"
-                value={time}
-                onChange={(e) => setTime(e.target.value)}
+                value={startTime}
+                onChange={(e) => setStartTime(e.target.value)}
                 className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-700 focus:border-blue-700 sm:text-sm ${
                   errors.time ? "border-red-500" : "border-gray-300"
                 }`}
