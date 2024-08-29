@@ -60,20 +60,15 @@ const Register = () => {
     try {
       e.preventDefault();
       if (validate()) {
-        console.log("Form submitted:", formData);
         const { name, email, password, phone } = formData;
 
-        console.log(name);
-
         const registerData = { name, email, password, phone };
-        console.log(registerData);
 
-        const result = await signup(registerData).unwrap();
-        console.log(result);
+        await signup(registerData).unwrap();
+        toast.success("Registration Success");
 
         // Redirect
         navigate("/login");
-        toast.success("Registration Success");
       }
     } catch (error: any) {
       console.log("Error: ", error);
