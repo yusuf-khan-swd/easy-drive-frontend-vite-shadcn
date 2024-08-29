@@ -17,10 +17,10 @@ const ManageUsers = () => {
   const handleDelete = async (id: string) => {
     try {
       const result = await deleteCar(id).unwrap();
-      toast.success(result?.message || "Car deleted Successfully");
+      toast.success(result?.message || "User deleted Successfully");
     } catch (error: any) {
       console.log("Error: ", error);
-      toast.error(error?.data?.message || "Car delete failed");
+      toast.error(error?.data?.message || "User delete failed");
     }
   };
 
@@ -61,13 +61,13 @@ const ManageUsers = () => {
   return (
     <div>
       <div className="flex justify-between">
-        <h2 className="text-2xl font-bold">Manage Cars</h2>
-        <div>
-          <Link to="/dashboard/admin/manage-cars/create-user">
-            <Button>Create</Button>
+        <h2 className="text-2xl font-bold">Manage Users</h2>
+        <div className="space-x-2">
+          <Link to="/dashboard/admin/manage-users/create-user">
+            <Button>User</Button>
           </Link>
-          <Link to="/dashboard/admin/manage-cars/create-admin">
-            <Button>Create</Button>
+          <Link to="/dashboard/admin/manage-users/create-admin">
+            <Button>Admin</Button>
           </Link>
         </div>
       </div>
