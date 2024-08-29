@@ -50,8 +50,6 @@ const ManageBooking = () => {
       id: "actions",
       cell: ({ row }) => {
         const id = row.original._id;
-        console.log(id);
-
         return (
           <div className="space-x-2">
             <Button variant="destructive" onClick={() => handleDelete(id)}>
