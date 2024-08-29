@@ -9,7 +9,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import toast from "react-hot-toast";
 
 const MyBooking = () => {
-  const { data, isLoading } = useMyBookingQuery(undefined);
+  const { data, isLoading, isError } = useMyBookingQuery(undefined);
   const bookings = data?.data;
   const [deleteMyBooking] = useDeleteMyBookingMutation();
 
@@ -19,6 +19,7 @@ const MyBooking = () => {
       toast.success(result?.message || "Booking deleted Successfully");
     } catch (error: any) {
       console.log("Error: ", error);
+
       toast.error(error?.data?.message || "Booking delete failed");
     }
   };
@@ -64,7 +65,7 @@ const MyBooking = () => {
         <h2 className="text-2xl font-bold">Manage Booking</h2>
       </div>
       <div className="w-full py-4">
-        {!bookings || bookings?.length < 1 ? (
+        {isError || !bookings || bookings?.length < 1 ? (
           <h2>No Data Available</h2>
         ) : (
           <DataTable columns={columns} data={bookings} />
