@@ -10,5 +10,5 @@ export const baseApi = createApi({
     headers: { Authorization: `Bearer ${TOKEN}` },
   }),
   endpoints: () => ({}),
-  tagTypes: ["car", "booking"],
+  tagTypes: ["car", "booking", "user"],
 });
