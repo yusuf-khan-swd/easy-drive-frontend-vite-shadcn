@@ -3,8 +3,10 @@ import { ColumnDef } from "@tanstack/react-table";
 import { DataTable } from "@/components/easy-drive/DataTable";
 import LoadingSpinner from "@/components/easy-drive/LoadingSpinner";
 import { Button } from "@/components/ui/button";
-import { useDeleteCarMutation } from "@/redux/api/carApi";
-import { useGetAllUsersQuery } from "@/redux/api/userApi";
+import {
+  useDeleteUserMutation,
+  useGetAllUsersQuery,
+} from "@/redux/api/userApi";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
@@ -12,11 +14,11 @@ const ManageUsers = () => {
   const { data: usersData, isLoading } = useGetAllUsersQuery(undefined);
   const users = usersData?.data;
   console.log(users);
-  const [deleteCar] = useDeleteCarMutation();
+  const [deleteUser] = useDeleteUserMutation();
 
   const handleDelete = async (id: string) => {
     try {
-      const result = await deleteCar(id).unwrap();
+      const result = await deleteUser(id).unwrap();
       toast.success(result?.message || "User deleted Successfully");
     } catch (error: any) {
       console.log("Error: ", error);
@@ -46,9 +48,6 @@ const ManageUsers = () => {
 
         return (
           <div className="space-x-2">
-            <Link to={`/dashboard/admin/manage-cars/${id}`}>
-              <Button>Edit</Button>
-            </Link>
             <Button variant="destructive" onClick={() => handleDelete(id)}>
               Delete
             </Button>
