@@ -2,24 +2,12 @@ import { DataTable } from "@/components/easy-drive/DataTable";
 import LoadingSpinner from "@/components/easy-drive/LoadingSpinner";
 import { Button } from "@/components/ui/button";
 import { useGetAllBookingsQuery } from "@/redux/api/bookingApi";
-import { useReturnCarMutation } from "@/redux/api/carApi";
 import { ColumnDef } from "@tanstack/react-table";
-import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const ManageReturnCars = () => {
   const { data, isLoading } = useGetAllBookingsQuery(undefined);
   const bookings = data?.data;
-  const [returnCar] = useReturnCarMutation();
-
-  const handleReturnCar = async (id: string) => {
-    try {
-      const result = await returnCar(id).unwrap();
-      toast.success(result?.message || "Car Return Successfully");
-    } catch (error: any) {
-      console.log("Error: ", error);
-      toast.error(error?.data?.message || "Car Return failed");
-    }
-  };
 
   if (isLoading) return <LoadingSpinner />;
 
@@ -52,7 +40,9 @@ const ManageReturnCars = () => {
 
         return (
           <div className="space-x-2">
-            <Button onClick={() => handleReturnCar(id)}>Return</Button>
+            <Link to={`/dashboard/admin/manage-return-cars/${id}`}>
+              <Button>Return</Button>
+            </Link>
           </div>
         );
       },
