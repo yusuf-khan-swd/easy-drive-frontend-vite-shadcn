@@ -64,11 +64,9 @@ const CreateUser = () => {
         console.log(registerData);
 
         const result = await signup(registerData).unwrap();
-        console.log(result);
+        toast.success(result?.message || "Registration Success");
 
-        // Redirect
         navigate("/dashboard/admin/manage-users");
-        toast.success("Registration Success");
       }
     } catch (error: any) {
       console.log("Error: ", error);
