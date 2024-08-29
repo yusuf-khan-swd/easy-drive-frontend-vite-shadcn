@@ -69,81 +69,101 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-[60vh] flex items-center justify-center">
-      <form
-        className="bg-white border p-8 rounded shadow-md w-full max-w-md"
-        onSubmit={handleSubmit}
-      >
-        <h2 className="text-2xl font-bold mb-6 text-center">Sign In</h2>
-
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700">
-            Email Address
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-700 focus:border-blue-700 sm:text-sm ${
-              errors.email ? "border-red-500" : "border-gray-300"
-            }`}
-          />
-          {errors.email && (
-            <p className="text-red-500 text-xs">{errors.email}</p>
-          )}
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="password" className="block text-gray-700">
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-700 focus:border-blue-700 sm:text-sm ${
-              errors.password ? "border-red-500" : "border-gray-300"
-            }`}
-          />
-          {errors.password && (
-            <p className="text-red-500 text-xs">{errors.password}</p>
-          )}
-        </div>
-
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+    <div>
+      <div className="min-h-[60vh] flex items-center justify-center">
+        <form
+          className="bg-white border p-8 rounded shadow-md w-full max-w-md"
+          onSubmit={handleSubmit}
         >
-          Sign In
-        </button>
+          <h2 className="text-2xl font-bold mb-6 text-center">Sign In</h2>
 
-        <p className="mt-4 text-center">
-          <Link to="/forgot-password" className="text-blue-500 underline">
-            Forgot Password?
-          </Link>
-        </p>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-gray-700">
+              Email Address
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-700 focus:border-blue-700 sm:text-sm ${
+                errors.email ? "border-red-500" : "border-gray-300"
+              }`}
+            />
+            {errors.email && (
+              <p className="text-red-500 text-xs">{errors.email}</p>
+            )}
+          </div>
 
-        <p className="mt-4 text-center">
-          Don't have an account?{" "}
-          <Link to="/register" className="text-blue-500 underline">
-            Sign Up Instead
-          </Link>
-        </p>
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-gray-700">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-700 focus:border-blue-700 sm:text-sm ${
+                errors.password ? "border-red-500" : "border-gray-300"
+              }`}
+            />
+            {errors.password && (
+              <p className="text-red-500 text-xs">{errors.password}</p>
+            )}
+          </div>
 
-        <div className="mt-4 text-sm text-center">
-          <Link to="/privacy" className="text-gray-600 underline">
-            Privacy Policy
-          </Link>{" "}
-          |
-          <Link to="/tos" className="text-gray-600 underline ml-2">
-            Terms of Service
-          </Link>
+          <button
+            type="submit"
+            className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+          >
+            Sign In
+          </button>
+
+          <p className="mt-4 text-center">
+            <Link to="/forgot-password" className="text-blue-500 underline">
+              Forgot Password?
+            </Link>
+          </p>
+
+          <p className="mt-4 text-center">
+            Don't have an account?{" "}
+            <Link to="/register" className="text-blue-500 underline">
+              Sign Up Instead
+            </Link>
+          </p>
+
+          <div className="mt-4 text-sm text-center">
+            <Link to="/privacy" className="text-gray-600 underline">
+              Privacy Policy
+            </Link>{" "}
+            |
+            <Link to="/tos" className="text-gray-600 underline ml-2">
+              Terms of Service
+            </Link>
+          </div>
+        </form>
+      </div>
+      <div className="text-center mt-8 space-y-3">
+        <div>
+          <p>
+            User Email: <span className="text-blue-600">user@easy.com</span>
+          </p>
+          <p>
+            User Password: <span className="text-blue-600">Pa$$w0rd!</span>
+          </p>
         </div>
-      </form>
+        <div>
+          <p>
+            Admin Email: <span className="text-blue-600">admin@easy.com</span>
+          </p>
+          <p>
+            Admin Password: <span className="text-blue-600">Pa$$w0rd!</span>
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
