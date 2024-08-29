@@ -1,25 +1,24 @@
 import LoadingSpinner from "@/components/easy-drive/LoadingSpinner";
-import { useCreateBookingMutation } from "@/redux/api/bookingApi";
-import { useGetSingleCarQuery } from "@/redux/api/carApi";
+import { useGetSingleBookingQuery } from "@/redux/api/bookingApi";
+import { useReturnCarMutation } from "@/redux/api/carApi";
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 
 const BookingDetails = () => {
-  const [createBooking] = useCreateBookingMutation();
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
+  const { id } = useParams();
+  const { data, isLoading } = useGetSingleBookingQuery(id || "");
+  const booking = data?.data;
+  const car = booking?.car;
+
+  const [returnCar] = useReturnCarMutation();
+  const [endTime, setEndTime] = useState("");
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const navigate = useNavigate();
-
-  const { id } = useParams();
-  const { data, isLoading } = useGetSingleCarQuery(id || "");
-  const car = data?.data;
 
   if (isLoading) return <LoadingSpinner />;
 
   const {
-    _id,
     name,
     description,
     color,
@@ -32,8 +31,7 @@ const BookingDetails = () => {
   const validate = (): boolean => {
     const newErrors: { [key: string]: string } = {};
 
-    if (!date) newErrors.date = "Date is required.";
-    if (!time) newErrors.time = "Time is required.";
+    if (!endTime) newErrors.time = "End Time is required.";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -43,16 +41,16 @@ const BookingDetails = () => {
     try {
       e.preventDefault();
       if (validate()) {
-        const bookingData = { carId: _id, date, startTime: time };
+        const bookingData = { bookingId: booking?._id, endTime: endTime };
 
-        const result = await createBooking(bookingData).unwrap();
-        toast.success(result?.message || "Car Booked Successfully");
+        const result = await returnCar(bookingData).unwrap();
+        toast.success(result?.message || "Car return Successfully");
 
-        navigate("/dashboard/user/my-booking");
+        navigate("/dashboard/admin/manage-return-cars");
       }
     } catch (error: any) {
       console.log("Error: ", error);
-      toast.error(error?.data?.message || "Car create failed");
+      toast.error(error?.data?.message || "Car return failed");
     }
   };
 
@@ -67,33 +65,41 @@ const BookingDetails = () => {
             className="bg-white border p-8 rounded shadow-md w-full max-w-md "
           >
             <h2 className="text-2xl font-bold mb-6 text-center">
-              Pick a DateTime
+              Pick Return Time
             </h2>
 
             <div className="mb-4">
-              <label htmlFor="date" className="block text-gray-700">
+              <label htmlFor="name" className="block text-gray-700">
                 Date
               </label>
               <input
+                disabled
                 type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-700 focus:border-blue-700 sm:text-sm ${
-                  errors.date ? "border-red-500" : "border-gray-300"
-                }`}
+                value={booking?.date}
+                className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-700 focus:border-blue-700 sm:text-sm `}
               />
-              {errors.date && (
-                <p className="text-red-500 text-xs">{errors.date}</p>
-              )}
             </div>
+
             <div className="mb-4">
               <label htmlFor="name" className="block text-gray-700">
                 Start Time
               </label>
               <input
+                disabled
                 type="time"
-                value={time}
-                onChange={(e) => setTime(e.target.value)}
+                value={booking?.startTime}
+                className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-700 focus:border-blue-700 sm:text-sm `}
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="name" className="block text-gray-700">
+                End Time
+              </label>
+              <input
+                type="time"
+                value={endTime}
+                onChange={(e) => setEndTime(e.target.value)}
                 className={`mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-700 focus:border-blue-700 sm:text-sm ${
                   errors.time ? "border-red-500" : "border-gray-300"
                 }`}
