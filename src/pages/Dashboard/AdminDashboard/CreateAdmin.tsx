@@ -55,13 +55,9 @@ const CreateAdmin = () => {
     try {
       e.preventDefault();
       if (validate()) {
-        console.log("Form submitted:", formData);
         const { name, email, password, phone } = formData;
 
-        console.log(name);
-
         const registerData = { name, email, password, phone };
-        console.log(registerData);
 
         const result = await createAdmin(registerData).unwrap();
         toast.success(result?.message || "Registration Success");
