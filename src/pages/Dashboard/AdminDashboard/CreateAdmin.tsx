@@ -1,7 +1,7 @@
 import { useCreateAdminMutation } from "@/redux/api/userApi";
 import { ChangeEvent, FormEvent, useState } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface SignUpFormData {
   name: string;
@@ -178,6 +178,15 @@ const CreateAdmin = () => {
         >
           Add Admin
         </button>
+        <p className="mt-4 text-center">
+          Need an user account?{" "}
+          <Link
+            to="/dashboard/admin/manage-users/create-user"
+            className="text-blue-500 underline"
+          >
+            Create User
+          </Link>
+        </p>
       </form>
     </div>
   );

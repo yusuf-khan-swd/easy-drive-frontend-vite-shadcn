@@ -1,7 +1,7 @@
 import { useSignupMutation } from "@/redux/api/authApi";
 import { ChangeEvent, FormEvent, useState } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface SignUpFormData {
   name: string;
@@ -178,6 +178,15 @@ const CreateUser = () => {
         >
           Add User
         </button>
+        <p className="mt-4 text-center">
+          Need an admin account?{" "}
+          <Link
+            to="/dashboard/admin/manage-users/create-admin"
+            className="text-blue-500 underline"
+          >
+            Create Admin
+          </Link>
+        </p>
       </form>
     </div>
   );
