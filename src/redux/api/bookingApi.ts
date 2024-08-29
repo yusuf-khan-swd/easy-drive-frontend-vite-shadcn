@@ -9,6 +9,9 @@ const bookingApi = baseApi.injectEndpoints({
         url: `${BOOKING_URL}`,
         method: "POST",
         body: bookingData,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("easy-drive-token")}`,
+        },
       }),
       invalidatesTags: ["booking"],
     }),
@@ -17,6 +20,9 @@ const bookingApi = baseApi.injectEndpoints({
       query: () => ({
         url: `${BOOKING_URL}`,
         method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("easy-drive-token")}`,
+        },
       }),
       providesTags: ["booking"],
     }),
@@ -25,6 +31,9 @@ const bookingApi = baseApi.injectEndpoints({
       query: (id: string) => ({
         url: `${BOOKING_URL}/${id}`,
         method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("easy-drive-token")}`,
+        },
       }),
       providesTags: ["booking"],
     }),
@@ -33,6 +42,9 @@ const bookingApi = baseApi.injectEndpoints({
       query: () => ({
         url: `${BOOKING_URL}/my-bookings`,
         method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("easy-drive-token")}`,
+        },
       }),
       providesTags: ["booking"],
     }),
@@ -41,6 +53,9 @@ const bookingApi = baseApi.injectEndpoints({
       query: (id: string) => ({
         url: `${BOOKING_URL}/my-bookings/${id}`,
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("easy-drive-token")}`,
+        },
       }),
       invalidatesTags: ["booking"],
     }),
@@ -49,6 +64,9 @@ const bookingApi = baseApi.injectEndpoints({
       query: (id: string) => ({
         url: `${BOOKING_URL}/${id}`,
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("easy-drive-token")}`,
+        },
       }),
       invalidatesTags: ["booking"],
     }),

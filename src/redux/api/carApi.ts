@@ -9,6 +9,9 @@ const carApi = baseApi.injectEndpoints({
         url: `${CAR_URL}`,
         method: "POST",
         body: carData,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("easy-drive-token")}`,
+        },
       }),
     }),
 
@@ -33,6 +36,9 @@ const carApi = baseApi.injectEndpoints({
         url: `${CAR_URL}/return`,
         method: "PUT",
         body: carData,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("easy-drive-token")}`,
+        },
       }),
       invalidatesTags: ["car", "booking"],
     }),
@@ -42,6 +48,9 @@ const carApi = baseApi.injectEndpoints({
         url: `${CAR_URL}/${carData._id}`,
         method: "PUT",
         body: carData,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("easy-drive-token")}`,
+        },
       }),
       invalidatesTags: ["car"],
     }),
@@ -50,6 +59,9 @@ const carApi = baseApi.injectEndpoints({
       query: (id: string) => ({
         url: `${CAR_URL}/${id}`,
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("easy-drive-token")}`,
+        },
       }),
       invalidatesTags: ["car"],
     }),

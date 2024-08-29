@@ -9,6 +9,9 @@ const userApi = baseApi.injectEndpoints({
         url: `${USER_URL}/admin`,
         method: "POST",
         body: carData,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("easy-drive-token")}`,
+        },
       }),
       invalidatesTags: ["user"],
     }),
@@ -17,6 +20,9 @@ const userApi = baseApi.injectEndpoints({
       query: () => ({
         url: `${USER_URL}`,
         method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("easy-drive-token")}`,
+        },
       }),
       providesTags: ["user"],
     }),
@@ -26,6 +32,9 @@ const userApi = baseApi.injectEndpoints({
         url: `${USER_URL}/${userData._id}`,
         method: "PUT",
         body: userData,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("easy-drive-token")}`,
+        },
       }),
       invalidatesTags: ["user"],
     }),
@@ -34,6 +43,9 @@ const userApi = baseApi.injectEndpoints({
       query: (id: string) => ({
         url: `${USER_URL}/${id}`,
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("easy-drive-token")}`,
+        },
       }),
       invalidatesTags: ["user"],
     }),
