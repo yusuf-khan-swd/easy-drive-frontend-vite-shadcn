@@ -1,4 +1,4 @@
-import { useSignupMutation } from "@/redux/api/authApi";
+import { useCreateAdminMutation } from "@/redux/api/userApi";
 import { ChangeEvent, FormEvent, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +12,7 @@ interface SignUpFormData {
 }
 
 const CreateAdmin = () => {
-  const [signup] = useSignupMutation();
+  const [createAdmin] = useCreateAdminMutation();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState<SignUpFormData>({
@@ -63,7 +63,7 @@ const CreateAdmin = () => {
         const registerData = { name, email, password, phone };
         console.log(registerData);
 
-        const result = await signup(registerData).unwrap();
+        const result = await createAdmin(registerData).unwrap();
         console.log(result);
 
         // Redirect
