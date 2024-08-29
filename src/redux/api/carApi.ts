@@ -13,6 +13,7 @@ const carApi = baseApi.injectEndpoints({
           Authorization: `Bearer ${localStorage.getItem("easy-drive-token")}`,
         },
       }),
+      invalidatesTags: ["car"],
     }),
 
     getAllCars: builder.query({
