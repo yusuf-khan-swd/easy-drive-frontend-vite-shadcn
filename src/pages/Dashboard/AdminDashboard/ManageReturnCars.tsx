@@ -1,25 +1,23 @@
 import { DataTable } from "@/components/easy-drive/DataTable";
 import LoadingSpinner from "@/components/easy-drive/LoadingSpinner";
 import { Button } from "@/components/ui/button";
-import {
-  useDeleteBookingMutation,
-  useGetAllBookingsQuery,
-} from "@/redux/api/bookingApi";
+import { useGetAllBookingsQuery } from "@/redux/api/bookingApi";
+import { useReturnCarMutation } from "@/redux/api/carApi";
 import { ColumnDef } from "@tanstack/react-table";
 import toast from "react-hot-toast";
 
 const ManageReturnCars = () => {
   const { data, isLoading } = useGetAllBookingsQuery(undefined);
   const bookings = data?.data;
-  const [deleteBooking] = useDeleteBookingMutation();
+  const [returnCar] = useReturnCarMutation();
 
-  const handleDelete = async (id: string) => {
+  const handleReturnCar = async (id: string) => {
     try {
-      const result = await deleteBooking(id).unwrap();
-      toast.success(result?.message || "Booking deleted Successfully");
+      const result = await returnCar(id).unwrap();
+      toast.success(result?.message || "Car Return Successfully");
     } catch (error: any) {
       console.log("Error: ", error);
-      toast.error(error?.data?.message || "Booking delete failed");
+      toast.error(error?.data?.message || "Car Return failed");
     }
   };
 
@@ -54,7 +52,7 @@ const ManageReturnCars = () => {
 
         return (
           <div className="space-x-2">
-            <Button onClick={() => handleDelete(id)}>Return</Button>
+            <Button onClick={() => handleReturnCar(id)}>Return</Button>
           </div>
         );
       },
