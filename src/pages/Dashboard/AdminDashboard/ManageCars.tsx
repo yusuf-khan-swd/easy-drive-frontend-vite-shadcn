@@ -67,7 +67,11 @@ const ManageCars = () => {
         </div>
       </div>
       <div className="w-full py-4">
-        <DataTable columns={columns} data={cars} />
+        {!cars || cars?.length < 1 ? (
+          <h2>No Data Available</h2>
+        ) : (
+          <DataTable columns={columns} data={cars} />
+        )}
       </div>
     </div>
   );

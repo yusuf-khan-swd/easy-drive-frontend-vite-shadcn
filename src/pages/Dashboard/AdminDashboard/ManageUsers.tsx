@@ -70,7 +70,11 @@ const ManageUsers = () => {
         </div>
       </div>
       <div className="w-full py-4">
-        <DataTable columns={columns} data={users} />
+        {!users || users?.length < 1 ? (
+          <h2>No Data Available</h2>
+        ) : (
+          <DataTable columns={columns} data={users} />
+        )}{" "}
       </div>
     </div>
   );
