@@ -14,8 +14,8 @@ const Cars = () => {
       <h2 className="text-2xl font-bold text-center mb-6">Our Cars</h2>
       {cars && cars.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {cars.map((car: TCar) => (
-            <CarCard car={car} />
+          {cars?.map((car: TCar) => (
+            <CarCard key={car?._id} car={car} />
           ))}
         </div>
       ) : (
