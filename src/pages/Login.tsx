@@ -18,8 +18,8 @@ const Login = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState<LoginFormData>({
-    email: "",
-    password: "",
+    email: "user@easy.com",
+    password: "Pa$$w0rd!",
   });
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
