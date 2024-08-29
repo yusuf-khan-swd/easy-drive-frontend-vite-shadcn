@@ -30,7 +30,7 @@ const carApi = baseApi.injectEndpoints({
 
     returnCar: builder.mutation({
       query: (carData) => ({
-        url: `${CAR_URL}/return}`,
+        url: `${CAR_URL}/return`,
         method: "PUT",
         body: carData,
       }),
