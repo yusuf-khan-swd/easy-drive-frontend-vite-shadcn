@@ -3,13 +3,15 @@ import { ColumnDef } from "@tanstack/react-table";
 import { DataTable } from "@/components/easy-drive/DataTable";
 import LoadingSpinner from "@/components/easy-drive/LoadingSpinner";
 import { Button } from "@/components/ui/button";
-import { useDeleteCarMutation, useGetAllCarsQuery } from "@/redux/api/carApi";
+import { useDeleteCarMutation } from "@/redux/api/carApi";
+import { useGetAllUsersQuery } from "@/redux/api/userApi";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 const ManageUsers = () => {
-  const { data: carsData, isLoading } = useGetAllCarsQuery(undefined);
-  const cars = carsData?.data;
+  const { data: usersData, isLoading } = useGetAllUsersQuery(undefined);
+  const users = usersData?.data;
+  console.log(users);
   const [deleteCar] = useDeleteCarMutation();
 
   const handleDelete = async (id: string) => {
@@ -30,12 +32,12 @@ const ManageUsers = () => {
       header: "Name",
     },
     {
-      accessorKey: "description",
-      header: "Description",
+      accessorKey: "email",
+      header: "Email",
     },
     {
-      accessorKey: "pricePerHour",
-      header: "PricePerHour",
+      accessorKey: "role",
+      header: "Role",
     },
     {
       id: "actions",
@@ -70,7 +72,7 @@ const ManageUsers = () => {
         </div>
       </div>
       <div className="w-full py-4">
-        <DataTable columns={columns} data={cars} />
+        <DataTable columns={columns} data={users} />
       </div>
     </div>
   );
