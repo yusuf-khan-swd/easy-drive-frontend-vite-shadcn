@@ -1,4 +1,6 @@
 
+Test git after changing local remote url by set-url - 7:30 PM 9/28/2024 
+
 Test remote repo after changing remote repo name - 7:27 PM 9/28/2024 
 
 5:06 PM 8/29/2024 - Deployed to vercel.
